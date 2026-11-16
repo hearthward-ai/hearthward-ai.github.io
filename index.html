@@ -3,10 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Hearthward 煦坞: a private AI assistant for home (early stage)</title>
 <meta name="description" content="Hearthward (煦坞): a free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hearthward 煦坞">
+<meta property="og:title" content="Hearthward 煦坞 (early stage)">
 <meta property="og:description" content="A free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.">
 <meta property="og:url" content="https://hearthward.ai/">
 <meta property="og:image" content="https://hearthward.ai/brand/hearthward-lockup-bilingual-light-2x.png">
@@ -14,38 +17,125 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#241A15" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://hearthward.ai/">
+<link rel="alternate" hreflang="en" href="https://hearthward.ai/">
+<link rel="alternate" hreflang="zh-Hans" href="https://hearthward.ai/zh/">
+<link rel="alternate" hreflang="x-default" href="https://hearthward.ai/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@600&family=ZCOOL+QingKe+HuangYou&display=swap">
+<link rel="preload" href="fonts/bitter-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--bg:#F6E9D8;--ink:#3B2A22;--flame:#E8743B;--gold:#F2B544;--link:#B4491A;--zh:#C4561F}
-@media (prefers-color-scheme:dark){:root{--bg:#241A15;--ink:#F6E9D8;--link:#F2B544;--zh:#E8743B}}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.25rem;background:var(--bg);color:var(--ink);font:1.125rem/1.6 Georgia,"Times New Roman",serif}
-main{max-width:34rem;text-align:center}
-.mark{width:clamp(96px,28vw,140px);height:auto;display:block;margin:0 auto 1.25rem}
-h1{margin:0;font:600 clamp(2.4rem,9vw,3.4rem)/1.1 Bitter,Georgia,serif;letter-spacing:.01em}
-.zh{margin:.35rem 0 1.5rem;font:clamp(1.3rem,5vw,1.8rem)/1.2 "ZCOOL QingKe HuangYou","Noto Sans SC",sans-serif;letter-spacing:.35em;padding-left:.35em;color:var(--zh)}
-p{margin:0 0 1.1rem}
-.status{display:inline-block;margin-top:.4rem;padding:.35rem .9rem;border:1px solid var(--gold);border-radius:999px;font-size:1rem}
-a{color:var(--link);text-underline-offset:3px}
-a:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
-footer{margin-top:2rem;font-size:.85rem;opacity:.75}
+@font-face{font-family:Bitter;font-weight:600;font-style:normal;font-display:swap;src:url(fonts/bitter-600-latin.woff2) format("woff2")}
+@font-face{font-family:"ZCOOL QingKe HuangYou";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/zcool-qingke-huangyou-subset.woff2) format("woff2")}
 </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+  <a class="langsw" href="zh/index.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/hearthward-lockup-bilingual-dark-2x.png">
+    <img class="logo" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞" width="289" height="64">
+  </picture>
+  <h1>A personal AI assistant that runs 24/7 on your own computer, private by default.</h1>
+  <p class="status">Early stage: in development, not ready to download.</p>
+  <nav aria-label="Page sections">
+    <a href="#what">What it is</a>
+    <a href="#guard">The guard</a>
+    <a href="#family">Family use</a>
+    <a href="#status">Status</a>
+    <a href="#disclaimer">Disclaimer</a>
+    <a href="privacy.html">Privacy policy</a>
+  </nav>
+</header>
+
 <main>
-<img class="mark" src="favicon.svg" alt="Hearthward logo: a doorway of bricks with a small flame inside" width="140" height="140">
-<h1>Hearthward</h1>
-<div class="zh" lang="zh-Hans">煦坞</div>
-<p>A free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.</p>
-<p class="status">Early stage. Code and docs are on the way.</p>
-<p><a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a></p>
-<footer>Hearthward, 煦坞 and the Hearthward logo are trademarks of TonyC115.</footer>
+  <section id="what">
+    <h2>What this is</h2>
+    <p>Hearthward is a free assistant that runs on your own computer with a local, open-weight language model. It is
+      meant to keep an eye on your calendar, messages, email and deadlines, and to remind you before something
+      slips instead of waiting to be asked. It is free to use and runs on a computer you already own: a capable PC with a modern graphics card (exact
+      requirements will come with the release). Nothing leaves your computer unless a feature needs it.</p>
+    <p>It is built on the open-source Hermes Agent (Nous Research).</p>
+    <p>It is a personal engineering project by Tony, a university student. It is not a product or a company, and
+      nobody can sign up for it yet.</p>
+  </section>
+
+  <section id="guard">
+    <h2>A guard for outside text</h2>
+    <p>An assistant that reads web pages, emails and messages can be tricked by instructions hidden in them
+      (this is called prompt injection). Hearthward includes a guard that blocks harmful instructions hidden in
+      that text. It is a supporting feature, built to make the assistant safe enough to leave running. It has
+      three parts:</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Threshold</h3>
+        <p>Outside text is scanned for hidden text and injection tricks, then fenced off so the model is told to treat it as
+          data, not as orders (best effort).</p>
+      </div>
+      <div class="card ember">
+        <h3>Knock</h3>
+        <p>Any action on your behalf asks first. The model only writes text; sending and changing things happen in
+          fixed code that waits for your yes.</p>
+      </div>
+      <div class="card">
+        <h3>Gatehouse</h3>
+        <p>Replies are checked on the way out, and only approved recipients can be messaged. If the guard can't
+          prove it is active, the assistant stays offline.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="family">
+    <h2>For you, or an add-on for your family</h2>
+    <p>Hearthward is mainly a personal tool. If you want, it can also be set up to help family members at home,
+      each with their own limits on what it may do and whom it may contact.</p>
+  </section>
+
+  <section id="why">
+    <h2>Why I am building it</h2>
+    <p>I wanted a 24/7 assistant for my own student life: tracking schedules and deadlines, planning my workload
+      across the week and drafting emails. Most AI helpers that can do this cost a monthly fee and send everything
+      to someone else's servers. I wanted something free and private that I, and people close to me, could trust
+      with daily tasks.</p>
+  </section>
+
+  <section id="status">
+    <h2>Status</h2>
+    <p>Hearthward is in early development and is not released. Parts of it are being built and tested privately.
+      There is no download yet. For how data is handled, see the <a href="privacy.html">privacy policy</a>.</p>
+    <h3>Planned</h3>
+    <ul>
+      <li>Reminders, deadlines and a daily brief</li>
+      <li>Sending email, only to an approved recipient list and only after you say yes</li>
+      <li>Reading your email inbox through the guard (this needs a stronger Google permission, so it is not done yet)</li>
+      <li>A workload planner that spreads tasks across the week</li>
+      <li>A public code release with the guard and its tests, once a complete, tested version is ready</li>
+    </ul>
+    <p>This page will link to the code when it is public. For now, follow along at
+      <a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a>.</p>
+  </section>
+
+  <section id="disclaimer">
+    <h2>Disclaimer</h2>
+    <div class="disclaimer">
+      <ul>
+        <li>A personal hobby project, provided as-is with no warranty of any kind.</li>
+        <li>Not financial, legal, medical or professional advice. Any research features are for learning only.</li>
+        <li>Local AI models make mistakes. Check anything important yourself.</li>
+        <li>The guard is best-effort. It lowers prompt-injection risk but can't promise to stop every attack.</li>
+        <li>You're responsible for your own data, your own accounts and following each service's terms (Google, Discord, etc.).</li>
+        <li>Not affiliated with or endorsed by Google, Nous Research (Hermes Agent), or any model maker.</li>
+        <li>Hearthward never asks for your passwords. Keys and logins stay on your machine and are entered by you.</li>
+      </ul>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <p>Hearthward is a personal hobby project, provided as-is. Nothing here is financial, legal, medical or professional advice. See the <a href="#disclaimer">disclaimer</a>.</p>
+  <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Apache-2.0 · &copy; TonyC115</p>
+</footer>
 </body>
 </html>

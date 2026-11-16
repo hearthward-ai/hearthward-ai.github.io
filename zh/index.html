@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Hearthward 煦坞：私人 AI 助手（早期阶段）</title>
+<meta name="description" content="Hearthward（煦坞）：一个免费、注重隐私的私人 AI 助手，正在开发中，可在家用电脑上用本地模型运行，并带有防止外部文字操控它的防护层。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hearthward 煦坞：私人 AI 助手（早期阶段）">
+<meta property="og:description" content="Hearthward（煦坞）：一个免费、注重隐私的私人 AI 助手，正在开发中，可在家用电脑上用本地模型运行，并带有防止外部文字操控它的防护层。">
+<meta property="og:url" content="https://hearthward.ai/zh/">
+<meta property="og:image" content="https://hearthward.ai/brand/hearthward-lockup-bilingual-light-2x.png">
+<meta property="og:image:alt" content="Hearthward 煦坞 标志">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#241A15" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://hearthward.ai/zh/">
+<link rel="alternate" hreflang="en" href="https://hearthward.ai/">
+<link rel="alternate" hreflang="zh-Hans" href="https://hearthward.ai/zh/">
+<link rel="alternate" hreflang="x-default" href="https://hearthward.ai/">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../fonts/bitter-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Bitter;font-weight:600;font-style:normal;font-display:swap;src:url(../fonts/bitter-600-latin.woff2) format("woff2")}
+</style>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+  <a class="langsw" href="../index.html" hreflang="en" lang="en">English</a>
+  <a href="index.html"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../brand/hearthward-lockup-bilingual-dark-2x.png">
+    <img class="logo" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞" width="289" height="64">
+  </picture></a>
+  <h1>一个全天候运行在你自己电脑上的私人 AI 助手，默认保护隐私。</h1>
+  <p class="status">早期阶段：开发中，暂不可下载。</p>
+  <p class="tagline">本页为英文版的中文译文，如有出入，以<a href="../index.html">英文版</a>为准。</p>
+  <nav aria-label="页面栏目">
+    <a href="#what">它是什么</a>
+    <a href="#guard">防护层</a>
+    <a href="#family">家人使用</a>
+    <a href="#status">进展</a>
+    <a href="#disclaimer">免责声明</a>
+    <a href="privacy.html">隐私政策</a>
+  </nav>
+</header>
+
+<main>
+  <section id="what">
+    <h2>它是什么</h2>
+    <p>Hearthward 是一个免费的助手，在你自己的电脑上用本地的开源语言模型运行。它的目标是帮你留意日程、消息、邮件和截止日期，并在事情快要耽误之前提醒你，而不是等你来问。它免费使用，在你已有的电脑上运行：需要一台配有较新显卡的高性能电脑（具体要求会在发布时说明）。除非某个功能需要，否则你的数据不会离开你的电脑。</p>
+    <p>它基于开源的 Hermes Agent（Nous Research）构建。</p>
+    <p>这是 Tony 一个人做的个人工程项目，他是一名大学生。它不是产品，也不是公司，目前还不能注册或使用。</p>
+  </section>
+
+  <section id="guard">
+    <h2>防止外部文字“劫持”助手的防护层</h2>
+    <p>助手要读网页、邮件和消息，就可能被藏在里面的指令骗到（这叫提示词注入）。Hearthward 带有一个防护层，用来拦截藏在这些文字里的有害指令。它是辅助功能，目的是让助手安全到可以放心地一直运行。它由三部分组成：</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Threshold（门槛）</h3>
+        <p>外来文字会先被扫描，找出隐藏文字和注入手法，再被隔离起来，让模型被告知只把它当作资料，而不是命令（尽力而为）。</p>
+      </div>
+      <div class="card ember">
+        <h3>Knock（敲门）</h3>
+        <p>凡是代表你去做的事，都要先问你。模型只负责写文字；发送、修改等操作由固定的程序执行，并且要等你点头。</p>
+      </div>
+      <div class="card">
+        <h3>Gatehouse（门房）</h3>
+        <p>回复在发出前会再检查一遍，只有你批准的收件人才能收到消息。如果防护层无法证明自己在正常工作，助手就保持离线。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="family">
+    <h2>自己用，也可以给家人用</h2>
+    <p>Hearthward 首先是个人工具。如果你愿意，也可以设置成帮助家里的其他人，并为每个人分别限定它能做什么、能联系谁。</p>
+  </section>
+
+  <section id="why">
+    <h2>我为什么做这个</h2>
+    <p>我想要一个 24 小时在线的助手来照顾我的学生生活：记录日程和截止日期，把一周的任务合理安排开，帮我起草邮件。大多数能做到这些的 AI 助手要按月收费，还会把你的一切发到别人的服务器上。我想要一个免费、注重隐私的工具，让我和身边的人都能放心地用它处理日常事务。</p>
+  </section>
+
+  <section id="status">
+    <h2>进展</h2>
+    <p>Hearthward 还处在早期开发阶段，尚未发布。其中一部分正在私下开发和测试。目前没有下载。数据如何处理，请见<a href="privacy.html">隐私政策</a>。</p>
+    <h3>计划中</h3>
+    <ul>
+      <li>提醒、截止日期和每日简报</li>
+      <li>发送邮件：只发给你批准过的收件人，并且要在你同意之后</li>
+      <li>通过防护层读取你的收件箱（这需要 Google 授予更高的权限，所以还没有做）</li>
+      <li>把任务均匀排进一周的工作量规划</li>
+      <li>公开代码（含防护层和测试），等有了完整、测试过的版本再发布</li>
+    </ul>
+    <p>代码公开后，本页会放上链接。目前可以在 <a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a> 关注进展。</p>
+  </section>
+
+  <section id="disclaimer">
+    <h2>免责声明</h2>
+    <div class="disclaimer">
+      <ul>
+        <li>这是个人兴趣项目，按“现状”提供，不作任何形式的担保。</li>
+        <li>不构成财务、法律、医疗或其他专业建议。任何研究类功能仅供学习。</li>
+        <li>本地 AI 模型会出错。重要的事请自己核实。</li>
+        <li>防护层只是尽力而为。它能降低提示词注入的风险，但不能保证拦住所有攻击。</li>
+        <li>你要对自己的数据和账号负责，并遵守各项服务（Google、Discord 等）的条款。</li>
+        <li>与 Google、Nous Research（Hermes Agent） 或任何模型厂商均无关联，也未获其认可。</li>
+        <li>Hearthward 绝不会向你索要密码。密钥和登录信息只保存在你的电脑上，由你自己输入。</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Hearthward 是个人兴趣项目，按“现状”提供。本站内容不构成财务、法律、医疗或其他专业建议。请参阅<a href="#disclaimer">免责声明</a>。如有出入，以<a href="../index.html">英文版</a>为准。</p>
+  <p><a href="privacy.html">隐私政策</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Apache-2.0 · &copy; TonyC115</p>
+</footer>
+</body>
+</html>

@@ -3,7 +3,7 @@ Copyright 2026 TonyC115
 
 Hearthward, 煦坞 and the Hearthward logo are trademarks of TonyC115.
 
-Fonts (used only in the logo artwork and the web page, not distributed here):
+Fonts (self-hosted subsets in fonts/, with their license files):
 - Bitter, SIL Open Font License 1.1
 - ZCOOL QingKe HuangYou, SIL Open Font License 1.1
-Both are served from Google Fonts.
+Subsets are served from this site; no third-party font service is used.
