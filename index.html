@@ -25,15 +25,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/bitter-600-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-@font-face{font-family:Bitter;font-weight:600;font-style:normal;font-display:swap;src:url(fonts/bitter-600-latin.woff2) format("woff2")}
-@font-face{font-family:"ZCOOL QingKe HuangYou";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/zcool-qingke-huangyou-subset.woff2) format("woff2")}
-</style>
+<link rel="preload" href="fonts/hw-sans-body-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hw-han-toggle-450.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
-  <a class="langsw" href="zh/index.html" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+<div class="wrap">
+  <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN</span><a href="zh/index.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="简体中文">中文</a></div>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="brand/hearthward-lockup-bilingual-dark-2x.png">
     <img class="logo" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞" width="289" height="64">
@@ -48,10 +47,12 @@
     <a href="#disclaimer">Disclaimer</a>
     <a href="privacy.html">Privacy policy</a>
   </nav>
+</div>
 </header>
 
 <main>
   <section id="what">
+<div class="wrap">
     <h2>What this is</h2>
     <p>Hearthward is a free assistant that runs on your own computer with a local, open-weight language model. It is
       meant to keep an eye on your calendar, messages, email and deadlines, and to remind you before something
@@ -60,9 +61,11 @@
     <p>It is built on the open-source Hermes Agent (Nous Research).</p>
     <p>It is a personal engineering project by Tony, a university student. It is not a product or a company, and
       nobody can sign up for it yet.</p>
-  </section>
+  </div>
+</section>
 
   <section id="guard">
+<div class="wrap">
     <h2>A guard for outside text</h2>
     <p>An assistant that reads web pages, emails and messages can be tricked by instructions hidden in them
       (this is called prompt injection). Hearthward includes a guard that blocks harmful instructions hidden in
@@ -85,23 +88,29 @@
           prove it is active, the assistant stays offline.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="family">
+<div class="wrap">
     <h2>For you, or an add-on for your family</h2>
     <p>Hearthward is mainly a personal tool. If you want, it can also be set up to help family members at home,
       each with their own limits on what it may do and whom it may contact.</p>
-  </section>
+  </div>
+</section>
 
   <section id="why">
+<div class="wrap">
     <h2>Why I am building it</h2>
     <p>I wanted a 24/7 assistant for my own student life: tracking schedules and deadlines, planning my workload
       across the week and drafting emails. Most AI helpers that can do this cost a monthly fee and send everything
       to someone else's servers. I wanted something free and private that I, and people close to me, could trust
       with daily tasks.</p>
-  </section>
+  </div>
+</section>
 
   <section id="status">
+<div class="wrap">
     <h2>Status</h2>
     <p>Hearthward is in early development and is not released. Parts of it are being built and tested privately.
       There is no download yet. For how data is handled, see the <a href="privacy.html">privacy policy</a>.</p>
@@ -115,9 +124,11 @@
     </ul>
     <p>This page will link to the code when it is public. For now, follow along at
       <a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a>.</p>
-  </section>
+  </div>
+</section>
 
   <section id="disclaimer">
+<div class="wrap">
     <h2>Disclaimer</h2>
     <div class="disclaimer">
       <ul>
@@ -130,12 +141,16 @@
         <li>Hearthward never asks for your passwords. Keys and logins stay on your machine and are entered by you.</li>
       </ul>
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer>
+<div class="wrap">
   <p>Hearthward is a personal hobby project, provided as-is. Nothing here is financial, legal, medical or professional advice. See the <a href="#disclaimer">disclaimer</a>.</p>
   <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Apache-2.0 · &copy; TonyC115</p>
+</div>
 </footer>
+<script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
 </body>
 </html>
