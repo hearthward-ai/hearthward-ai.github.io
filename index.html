@@ -12,8 +12,11 @@
 <meta property="og:title" content="Hearthward 煦坞 (early stage)">
 <meta property="og:description" content="A free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.">
 <meta property="og:url" content="https://hearthward.ai/">
-<meta property="og:image" content="https://hearthward.ai/brand/hearthward-lockup-bilingual-light-2x.png">
-<meta property="og:image:alt" content="Hearthward 煦坞 logo">
+<meta property="og:image" content="https://hearthward.ai/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hearthward 煦坞 logo: a free, private AI assistant for your own computer (early stage)">
+<meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#241A15" media="(prefers-color-scheme: dark)">
@@ -42,6 +45,7 @@
   <nav aria-label="Page sections">
     <a href="#what">What it is</a>
     <a href="#guard">The guard</a>
+    <a href="#how">How it works</a>
     <a href="#family">Family use</a>
     <a href="#status">Status</a>
     <a href="#disclaimer">Disclaimer</a>
@@ -88,6 +92,19 @@
           prove it is active, the assistant stays offline.</p>
       </div>
     </div>
+  </div>
+</section>
+
+  <section id="how">
+<div class="wrap">
+    <h2>How it works</h2>
+    <p>This is the planned design. The guard is in development, so it is not a finished product.</p>
+    <p>Knock applies only to actions, such as sending an email. Ordinary replies do not need your approval.</p>
+    <figure class="flow">
+      <svg class="hw-h" viewBox="0 0 1200 270" role="img" aria-labelledby="hwt-h hwd-h"><title id="hwt-h">How a message moves through Hearthward: message, Threshold, local model, Gatehouse, reply, with Knock as a side branch for actions.</title><desc id="hwd-h">Main line: a message arrives (email, chat or web page). Threshold scans it and fences it off as data. The local model writes text. Gatehouse checks the reply and holds it if unsafe. The reply goes only to approved recipients. Side branch: if the local model wants to take an action such as using a tool, sending an email or changing a file, Knock asks you first, and the action runs only on your yes. The guard parts are in development.</desc><rect class="b plain" x="0" y="10" width="200" height="90" rx="12"/><text class="t" x="100.0" y="50.0" text-anchor="middle">Message</text><text class="s" x="100.0" y="76.0" text-anchor="middle">email, chat, web page</text><path class="a" d="M212 55H236M229 49L237 55L229 61"/><rect class="b guard" x="250" y="10" width="200" height="90" rx="12"/><text class="t" x="350.0" y="50.0" text-anchor="middle">Threshold</text><text class="s" x="350.0" y="76.0" text-anchor="middle">scans and fences it</text><path class="a" d="M462 55H486M479 49L487 55L479 61"/><rect class="b plain" x="500" y="10" width="200" height="90" rx="12"/><text class="t" x="600.0" y="50.0" text-anchor="middle">Local model</text><text class="s" x="600.0" y="76.0" text-anchor="middle">writes text only</text><path class="a" d="M712 55H736M729 49L737 55L729 61"/><rect class="b guard" x="750" y="10" width="200" height="90" rx="12"/><text class="t" x="850.0" y="50.0" text-anchor="middle">Gatehouse</text><text class="s" x="850.0" y="76.0" text-anchor="middle">checks, holds if unsafe</text><path class="a" d="M962 55H986M979 49L987 55L979 61"/><rect class="b plain" x="1000" y="10" width="200" height="90" rx="12"/><text class="t" x="1100.0" y="50.0" text-anchor="middle">Reply</text><text class="s" x="1100.0" y="76.0" text-anchor="middle">approved recipients only</text><path class="a" d="M600 104V160M594 153L600 161L606 153"/><text class="s" x="614" y="140">action? (tool, email, file)</text><rect class="b knock" x="500" y="166" width="200" height="90" rx="12"/><text class="t" x="600.0" y="206.0" text-anchor="middle">Knock</text><text class="s" x="600.0" y="232.0" text-anchor="middle">asks you first</text><path class="a" d="M712 211H736M729 205L737 211L729 217"/><rect class="b plain" x="750" y="166" width="230" height="90" rx="12"/><text class="t" x="865.0" y="206.0" text-anchor="middle">Action runs</text><text class="s" x="865.0" y="232.0" text-anchor="middle">only on your yes</text></svg>
+      <svg class="hw-v" viewBox="0 0 320 760" role="img" aria-labelledby="hwt-v hwd-v"><title id="hwt-v">How a message moves through Hearthward: message, Threshold, local model, Gatehouse, reply, with Knock as a side branch for actions.</title><desc id="hwd-v">Main line: a message arrives (email, chat or web page). Threshold scans it and fences it off as data. The local model writes text. Gatehouse checks the reply and holds it if unsafe. The reply goes only to approved recipients. Side branch: if the local model wants to take an action such as using a tool, sending an email or changing a file, Knock asks you first, and the action runs only on your yes. The guard parts are in development.</desc><rect class="b plain" x="10" y="2" width="300" height="62" rx="12"/><text class="t" x="160.0" y="28.0" text-anchor="middle">Message</text><text class="s" x="160.0" y="54.0" text-anchor="middle">email, chat, web page</text><path class="a" d="M160 68V90M154 83L160 91L166 83"/><rect class="b guard" x="10" y="92" width="300" height="62" rx="12"/><text class="t" x="160.0" y="118.0" text-anchor="middle">Threshold</text><text class="s" x="160.0" y="144.0" text-anchor="middle">scans and fences it</text><path class="a" d="M160 158V180M154 173L160 181L166 173"/><rect class="b plain" x="10" y="182" width="300" height="62" rx="12"/><text class="t" x="160.0" y="208.0" text-anchor="middle">Local model</text><text class="s" x="160.0" y="234.0" text-anchor="middle">writes text only</text><path class="a" d="M160 248V270M154 263L160 271L166 263"/><rect class="b guard" x="10" y="272" width="300" height="62" rx="12"/><text class="t" x="160.0" y="298.0" text-anchor="middle">Gatehouse</text><text class="s" x="160.0" y="324.0" text-anchor="middle">checks, holds if unsafe</text><path class="a" d="M160 338V360M154 353L160 361L166 353"/><rect class="b plain" x="10" y="362" width="300" height="62" rx="12"/><text class="t" x="160.0" y="388.0" text-anchor="middle">Reply</text><text class="s" x="160.0" y="414.0" text-anchor="middle">approved recipients only</text><text class="s" x="160" y="476" text-anchor="middle">Side branch from Local model, for actions</text><path class="a" style="stroke-dasharray:2 6" d="M10 448H310"/><rect class="b plain" x="10" y="492" width="300" height="62" rx="12"/><text class="t" x="160.0" y="518.0" text-anchor="middle">Action?</text><text class="s" x="160.0" y="544.0" text-anchor="middle">tool, email, file</text><path class="a" d="M160 558V580M154 573L160 581L166 573"/><rect class="b knock" x="10" y="582" width="300" height="62" rx="12"/><text class="t" x="160.0" y="608.0" text-anchor="middle">Knock</text><text class="s" x="160.0" y="634.0" text-anchor="middle">asks you first</text><path class="a" d="M160 648V670M154 663L160 671L166 663"/><rect class="b plain" x="10" y="672" width="300" height="62" rx="12"/><text class="t" x="160.0" y="698.0" text-anchor="middle">Action runs</text><text class="s" x="160.0" y="724.0" text-anchor="middle">only on your yes</text></svg>
+      <figcaption>Dashed outline: the guard parts, in development. Plain outline: the rest of the assistant.</figcaption>
+    </figure>
   </div>
 </section>
 

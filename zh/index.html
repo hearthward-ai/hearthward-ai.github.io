@@ -12,8 +12,11 @@
 <meta property="og:title" content="Hearthward 煦坞：私人 AI 助手（早期阶段）">
 <meta property="og:description" content="Hearthward（煦坞）：一个免费、注重隐私的私人 AI 助手，正在开发中，可在家用电脑上用本地模型运行，并带有防止外部文字操控它的防护层。">
 <meta property="og:url" content="https://hearthward.ai/zh/">
-<meta property="og:image" content="https://hearthward.ai/brand/hearthward-lockup-bilingual-light-2x.png">
-<meta property="og:image:alt" content="Hearthward 煦坞 标志">
+<meta property="og:image" content="https://hearthward.ai/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hearthward 煦坞 标志：免费、注重隐私的本机 AI 助手（早期阶段）">
+<meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#241A15" media="(prefers-color-scheme: dark)">
@@ -44,6 +47,7 @@
   <nav aria-label="页面栏目">
     <a href="#what">它是什么</a>
     <a href="#guard">防护层</a>
+    <a href="#how">它如何工作</a>
     <a href="#family">家人使用</a>
     <a href="#status">进展</a>
     <a href="#disclaimer">免责声明</a>
@@ -80,6 +84,19 @@
         <p>回复在发出前会再检查一遍，只有你批准的收件人才能收到消息。如果防护层无法证明自己在正常工作，助手就保持离线。</p>
       </div>
     </div>
+  </div>
+</section>
+
+  <section id="how">
+<div class="wrap">
+    <h2>它如何工作</h2>
+    <p>这是计划中的设计。防护层仍在开发中，还不是成品。</p>
+    <p>Knock 只管动作（例如发送邮件）；普通回复不需要你批准。</p>
+    <figure class="flow">
+      <svg class="hw-h" viewBox="0 0 1200 270" role="img" aria-labelledby="hwt-h hwd-h"><title id="hwt-h">消息在 Hearthward 中的流转：消息、Threshold、本地模型、Gatehouse、回复；涉及动作时由 Knock 作为分支先问你。</title><desc id="hwd-h">主线：消息（邮件、聊天或网页）传来。Threshold 扫描并把它隔离为资料。本地模型写出文字。Gatehouse 检查回复，不安全就拦下。回复只发给已批准的收件人。分支：如果本地模型想执行动作，例如使用工具、发送邮件或修改文件，Knock 会先问你，只有你同意后动作才会执行。防护层各部分仍在开发中。</desc><rect class="b plain" x="0" y="10" width="200" height="90" rx="12"/><text class="t" x="100.0" y="50.0" text-anchor="middle">消息</text><text class="s" x="100.0" y="76.0" text-anchor="middle">邮件、聊天、网页</text><path class="a" d="M212 55H236M229 49L237 55L229 61"/><rect class="b guard" x="250" y="10" width="200" height="90" rx="12"/><text class="t" x="350.0" y="50.0" text-anchor="middle">Threshold 门槛</text><text class="s" x="350.0" y="76.0" text-anchor="middle">扫描并隔离</text><path class="a" d="M462 55H486M479 49L487 55L479 61"/><rect class="b plain" x="500" y="10" width="200" height="90" rx="12"/><text class="t" x="600.0" y="50.0" text-anchor="middle">本地模型</text><text class="s" x="600.0" y="76.0" text-anchor="middle">只负责写文字</text><path class="a" d="M712 55H736M729 49L737 55L729 61"/><rect class="b guard" x="750" y="10" width="200" height="90" rx="12"/><text class="t" x="850.0" y="50.0" text-anchor="middle">Gatehouse 门房</text><text class="s" x="850.0" y="76.0" text-anchor="middle">检查，不安全就拦下</text><path class="a" d="M962 55H986M979 49L987 55L979 61"/><rect class="b plain" x="1000" y="10" width="200" height="90" rx="12"/><text class="t" x="1100.0" y="50.0" text-anchor="middle">回复</text><text class="s" x="1100.0" y="76.0" text-anchor="middle">仅发给已批准的收件人</text><path class="a" d="M600 104V160M594 153L600 161L606 153"/><text class="s" x="614" y="140">要执行动作？（工具、邮件、文件）</text><rect class="b knock" x="500" y="166" width="200" height="90" rx="12"/><text class="t" x="600.0" y="206.0" text-anchor="middle">Knock 敲门</text><text class="s" x="600.0" y="232.0" text-anchor="middle">先问你</text><path class="a" d="M712 211H736M729 205L737 211L729 217"/><rect class="b plain" x="750" y="166" width="230" height="90" rx="12"/><text class="t" x="865.0" y="206.0" text-anchor="middle">执行动作</text><text class="s" x="865.0" y="232.0" text-anchor="middle">你同意后才执行</text></svg>
+      <svg class="hw-v" viewBox="0 0 320 760" role="img" aria-labelledby="hwt-v hwd-v"><title id="hwt-v">消息在 Hearthward 中的流转：消息、Threshold、本地模型、Gatehouse、回复；涉及动作时由 Knock 作为分支先问你。</title><desc id="hwd-v">主线：消息（邮件、聊天或网页）传来。Threshold 扫描并把它隔离为资料。本地模型写出文字。Gatehouse 检查回复，不安全就拦下。回复只发给已批准的收件人。分支：如果本地模型想执行动作，例如使用工具、发送邮件或修改文件，Knock 会先问你，只有你同意后动作才会执行。防护层各部分仍在开发中。</desc><rect class="b plain" x="10" y="2" width="300" height="62" rx="12"/><text class="t" x="160.0" y="28.0" text-anchor="middle">消息</text><text class="s" x="160.0" y="54.0" text-anchor="middle">邮件、聊天、网页</text><path class="a" d="M160 68V90M154 83L160 91L166 83"/><rect class="b guard" x="10" y="92" width="300" height="62" rx="12"/><text class="t" x="160.0" y="118.0" text-anchor="middle">Threshold 门槛</text><text class="s" x="160.0" y="144.0" text-anchor="middle">扫描并隔离</text><path class="a" d="M160 158V180M154 173L160 181L166 173"/><rect class="b plain" x="10" y="182" width="300" height="62" rx="12"/><text class="t" x="160.0" y="208.0" text-anchor="middle">本地模型</text><text class="s" x="160.0" y="234.0" text-anchor="middle">只负责写文字</text><path class="a" d="M160 248V270M154 263L160 271L166 263"/><rect class="b guard" x="10" y="272" width="300" height="62" rx="12"/><text class="t" x="160.0" y="298.0" text-anchor="middle">Gatehouse 门房</text><text class="s" x="160.0" y="324.0" text-anchor="middle">检查，不安全就拦下</text><path class="a" d="M160 338V360M154 353L160 361L166 353"/><rect class="b plain" x="10" y="362" width="300" height="62" rx="12"/><text class="t" x="160.0" y="388.0" text-anchor="middle">回复</text><text class="s" x="160.0" y="414.0" text-anchor="middle">仅发给已批准的收件人</text><text class="s" x="160" y="476" text-anchor="middle">从本地模型分出的分支：涉及动作时</text><path class="a" style="stroke-dasharray:2 6" d="M10 448H310"/><rect class="b plain" x="10" y="492" width="300" height="62" rx="12"/><text class="t" x="160.0" y="518.0" text-anchor="middle">要执行动作？</text><text class="s" x="160.0" y="544.0" text-anchor="middle">工具、邮件、文件</text><path class="a" d="M160 558V580M154 573L160 581L166 573"/><rect class="b knock" x="10" y="582" width="300" height="62" rx="12"/><text class="t" x="160.0" y="608.0" text-anchor="middle">Knock 敲门</text><text class="s" x="160.0" y="634.0" text-anchor="middle">先问你</text><path class="a" d="M160 648V670M154 663L160 671L166 663"/><rect class="b plain" x="10" y="672" width="300" height="62" rx="12"/><text class="t" x="160.0" y="698.0" text-anchor="middle">执行动作</text><text class="s" x="160.0" y="724.0" text-anchor="middle">你同意后才执行</text></svg>
+      <figcaption>虚线边框：防护层的各部分，仍在开发中。实线边框：助手的其余部分。</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -123,7 +140,7 @@
         <li>本地 AI 模型会出错。重要的事请自己核实。</li>
         <li>防护层只是尽力而为。它能降低提示词注入的风险，但不能保证拦住所有攻击。</li>
         <li>你要对自己的数据和账号负责，并遵守各项服务（Google、Discord 等）的条款。</li>
-        <li>与 Google、Nous Research（Hermes Agent） 或任何模型厂商均无关联，也未获其认可。</li>
+        <li>与 Google、Nous Research（Hermes Agent）或任何模型厂商均无关联，也未获其认可。</li>
         <li>Hearthward 绝不会向你索要密码。密钥和登录信息只保存在你的电脑上，由你自己输入。</li>
       </ul>
     </div>

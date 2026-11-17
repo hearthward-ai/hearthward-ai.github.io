@@ -97,3 +97,22 @@ html:lang(zh-Hans) h2{text-wrap:balance}
 html:lang(zh-Hans) nav{gap:0 2px}
 html:lang(zh-Hans) nav a{padding:10px 8px;margin-left:-8px}
 @media (max-width:599px){html:lang(zh-Hans) nav:has(a:nth-child(6)){display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0 14px}}
+
+/* how-it-works diagram */
+.flow{margin:0 0 1rem;max-width:none}
+main .wrap>.flow{grid-column:1/-1;max-width:none}
+.flow svg{display:block;width:100%;height:auto;font-family:var(--body)}
+.flow .hw-v{max-width:360px;margin:0 auto}
+.flow .hw-h{display:none}
+@media (min-width:900px){.flow .hw-h{display:block}.flow .hw-v{display:none}}
+.flow .b{fill:var(--card);stroke:var(--line);stroke-width:2}
+.flow .b.guard,.flow .b.knock{stroke-width:2.5;stroke-dasharray:7 5}
+.flow .b.guard{stroke:var(--accent)}
+.flow .b.knock{stroke:#BF4E18}
+@media (prefers-color-scheme:dark){.flow .b.knock{stroke:var(--flame)}}
+.flow .t{fill:var(--fg);font-size:18px;font-weight:700}
+.flow .s{fill:var(--muted);font-size:13.5px}
+:lang(zh-Hans) .flow .t{font-size:17px}
+:lang(zh-Hans) .flow .s{font-size:13px}
+.flow .a{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow figcaption{margin-top:.8rem;color:var(--muted);font-size:.92rem}
