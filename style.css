@@ -10,11 +10,11 @@
 /* real bold Han: only the characters that are bold on the zh pages (built automatically by build-site-fonts.py) */
 @font-face{font-family:"HW Han Body";font-weight:600 700;font-style:normal;font-display:swap;src:url(fonts/hw-han-bold-650.woff2) format("woff2")}
 @font-face{font-family:"HW Han Toggle";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/hw-han-toggle-450.woff2) format("woff2")}
-@font-face{font-family:"HW Wakaisho";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/wakaisho-medium-head.woff2) format("woff2")}
+@font-face{font-family:"HW Han Head";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/hw-han-head-400.woff2) format("woff2")}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;font-synthesis:none}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 var(--body);overflow-wrap:break-word}
-:lang(zh-Hans){--body:var(--font-body-zh);--head:"HW Sans Body","HW Wakaisho",var(--font-body-zh)}
+:lang(zh-Hans){--body:var(--font-body-zh);--head:"HW Sans Body","HW Han Head",var(--font-body-zh)}
 html:lang(zh-Hans) body{font-size:18px;font-weight:440;line-height:1.8}
 html:lang(zh-Hans) h1{line-height:1.35}
 .wrap{max-width:1160px;margin:0 auto;padding-left:16px;padding-right:16px;position:relative}
@@ -88,8 +88,8 @@ footer p{margin:.3rem 0;max-width:80ch}
 @media (min-width:700px){.langsw{position:absolute;top:0;right:24px;margin:0}}
 @media (prefers-reduced-motion:reduce){.langsw::before,.langsw>*{transition:none}}
 @media (max-width:599px){main>section{padding:34px 0}}
-/* zh headings: Han = Wakaisho Medium (one face); Latin runs = Source Sans 3 at a matching weight; 550 stays below the faux-bold threshold */
-:lang(zh-Hans) h1,:lang(zh-Hans) h2,:lang(zh-Hans) h3{font-weight:550}
+/* zh headings: Han = Noto Sans SC Regular 400 ("HW Han Head"); Latin runs = Source Sans 3 at the same weight */
+:lang(zh-Hans) h1,:lang(zh-Hans) h2,:lang(zh-Hans) h3{font-weight:400}
 :lang(zh-Hans) h3{font-size:1.25rem}
 html:lang(zh-Hans) h2{text-wrap:balance}
 .langsw [lang="zh-Hans"]{font-family:"HW Han Toggle","HW Han Body","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
