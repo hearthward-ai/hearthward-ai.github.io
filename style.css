@@ -16,7 +16,6 @@ html{-webkit-text-size-adjust:100%;font-synthesis:none}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 var(--body);overflow-wrap:break-word}
 :lang(zh-Hans){--body:var(--font-body-zh);--head:"HW Sans Body","HW Han Head",var(--font-body-zh)}
 html:lang(zh-Hans) body{font-size:18px;font-weight:440;line-height:1.8}
-html:lang(zh-Hans) h1{line-height:1.35}
 .wrap{max-width:1160px;margin:0 auto;padding-left:16px;padding-right:16px;position:relative}
 @media (min-width:600px){.wrap{padding-left:24px;padding-right:24px}}
 a{color:var(--accent);text-underline-offset:3px}
@@ -27,7 +26,6 @@ h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.25}
 header{background:var(--hero);border-bottom:3px solid var(--flame);padding:20px 0 28px}
 .logo{display:block;width:289px;max-width:100%;height:auto}
 h1{margin:22px 0 12px;font-size:clamp(1.6rem,5.2vw,2.7rem);max-width:26ch}
-html:lang(zh-Hans) h1{max-width:19em}
 .tagline{margin:0 0 14px;color:var(--muted);font-size:1.08rem;max-width:68ch}
 .status{display:inline-block;margin:0 0 16px;padding:.3rem .9rem;border:1px solid var(--noteline);border-radius:999px;background:var(--note);font-size:.95rem}
 nav{display:flex;flex-wrap:wrap;gap:4px 8px}
@@ -66,6 +64,7 @@ footer p{margin:.3rem 0;max-width:80ch}
 
 /* language slider: EN | 中文 (a real link; knob slides on click, CSS-only fallback on :active) */
 .langsw{position:relative;display:grid;grid-template-columns:1fr 1fr;width:116px;height:44px;margin:0 0 14px auto;padding:3px;border:1px solid var(--tline);border-radius:999px;background:var(--card);font-size:.95rem;font-weight:700;line-height:1}
+.langsw>a[lang=en]{font-weight:500}
 .langsw>a{cursor:pointer}
 .langsw::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--accent);transition:transform .22s cubic-bezier(.4,0,.2,1)}
 .langsw.on-zh::before{transform:translateX(100%)}
@@ -91,10 +90,9 @@ footer p{margin:.3rem 0;max-width:80ch}
 /* zh headings: Han = Noto Sans SC Regular 400 ("HW Han Head"); Latin runs = Source Sans 3 at the same weight */
 :lang(zh-Hans) h1,:lang(zh-Hans) h2,:lang(zh-Hans) h3{font-weight:400}
 :lang(zh-Hans) h3{font-size:1.25rem}
+html:lang(zh-Hans) h1{max-width:19em;line-height:1.35;text-wrap:balance}
 html:lang(zh-Hans) h2{text-wrap:balance}
-.langsw [lang="zh-Hans"]{font-family:"HW Han Toggle","HW Han Body","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
-.langsw [lang="zh-Hans"]{font-weight:400}
-html:lang(zh-Hans) h1{text-wrap:balance}
+.langsw [lang="zh-Hans"]{font-family:"HW Han Toggle","HW Han Body","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-weight:400}
 .nb{white-space:nowrap}
 html:lang(zh-Hans) nav{gap:0 2px}
 html:lang(zh-Hans) nav a{padding:10px 8px;margin-left:-8px}
