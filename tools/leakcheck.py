@@ -226,11 +226,11 @@ def is_site_font(rel: str) -> bool:
     return Path(parts[-1]).suffix in FONT_EXT and "fonts" in parts[:-1]
 
 
-FONT_TABLES_OK = {"cmap", "glyf", "loca", "head", "hhea", "hmtx", "maxp", "name", "OS/2", "post", "GSUB",
-                  "GPOS", "GDEF", "BASE", "kern", "gasp", "prep", "fpgm", "cvt ", "CFF ", "CFF2", "VORG", "vhea",
-                  "vmtx", "fvar", "gvar", "avar", "STAT", "HVAR", "MVAR", "VVAR", "meta", "DSIG"}
+FONT_TABLES_OK = {"BASE", "GDEF", "GPOS", "GSUB", "HVAR", "MVAR", "OS/2", "STAT", "avar", "cmap", "fvar", "gasp",
+                  "glyf", "gvar", "head", "hhea", "hmtx", "loca", "maxp", "name", "post", "vhea", "vmtx"}
+# Add a table here only when a real site font needs it (cvt, fpgm, prep, kern, CFF ... are refused until then).
 FONT_TABLES_STRINGS = {"post", "STAT", "gasp", "OS/2", "head", "hhea", "maxp", "BASE", "GDEF", "GPOS", "GSUB",
-                       "fvar", "avar", "HVAR", "MVAR", "VVAR", "meta", "DSIG", "name"}
+                       "fvar", "avar", "HVAR", "MVAR", "name", "cmap", "hmtx", "vhea", "vmtx"}
 
 
 def font_strings(path: Path) -> list[tuple[str, str]]:
@@ -326,9 +326,27 @@ def jpeg_tail_problems(rest: bytes) -> list[str]:
             break
         if 0xE1 <= m <= 0xEF or m == 0xFE:
             found.append("COM" if m == 0xFE else f"APP{m - 0xE0}-after-scan")
+        elif m not in JPEG_POST_OK:
+            found.append("unknown-marker-after-scan")
         i += 2 + struct.unpack(">H", rest[i + 2:i + 4])[0]
     found.append("no-EOI")
     return found
+
+
+def png_idat_problem(data: bytes) -> str | None:
+    """None when the joined IDAT data is exactly one complete zlib stream; else a short reason."""
+    import zlib
+    idat = b"".join(c[8:-4] for t, c in png_chunks(data) if t == b"IDAT")
+    d = zlib.decompressobj()
+    try:
+        d.decompress(idat)
+    except zlib.error:
+        return "idat-corrupt"
+    if not d.eof:
+        return "idat-incomplete"
+    if d.unused_data:
+        return "idat-trailing"
+    return None
 
 
 def png_chunks(data: bytes):
@@ -369,6 +387,10 @@ def jpeg_segments(data: bytes):
     raise ValueError("truncated JPEG")
 
 
+JPEG_PRE_OK = {0xD8, 0xC0, 0xC1, 0xC2, 0xC4, 0xDB, 0xDD, 0xDA}      # SOI, SOF0-2, DHT, DQT, DRI, SOS
+JPEG_POST_OK = {0xC4, 0xDB, 0xDD, 0xDA, 0xDC}                       # DHT, DQT, DRI, SOS, DNL (RSTn, EOI handled)
+
+
 def _jpeg_keep(marker, seg) -> bool:
     if marker is None or marker == 0xD8:
         return True
@@ -376,7 +398,7 @@ def _jpeg_keep(marker, seg) -> bool:
         return seg[4:9] == b"JFIF\x00"
     if marker == 0xEE:              # APP14 Adobe colour transform: no personal data
         return True
-    return not (0xE1 <= marker <= 0xEF or marker == 0xFE)
+    return marker in JPEG_PRE_OK        # APPn, COM and every unknown marker are dropped / flagged
 
 
 def image_metadata(path: Path) -> list[str]:
@@ -389,11 +411,19 @@ def image_metadata(path: Path) -> list[str]:
         found = {c.decode("latin-1") for c, _ in png_chunks(data) if c not in PNG_KEEP}
         if png_trailing(data):
             found.add("trailing-bytes")
+        prob = png_idat_problem(data)
+        if prob:
+            found.add(prob)
         return sorted(found)
     found = []
     for marker, seg in jpeg_segments(data):
         if not _jpeg_keep(marker, seg):
-            found.append("COM" if marker == 0xFE else f"APP{marker - 0xE0}")
+            if marker == 0xFE:
+                found.append("COM")
+            elif 0xE1 <= marker <= 0xEF:
+                found.append(f"APP{marker - 0xE0}")
+            else:
+                found.append("unknown-marker")
         if marker is None:
             found += jpeg_tail_problems(seg)
     return sorted(set(found))

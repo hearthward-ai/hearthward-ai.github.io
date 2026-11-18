@@ -1,4 +1,5 @@
 # Pinned by hash. Used only by the CI leak scan, to read the self-hosted .woff2 fonts.
+# Pins here are not updated by Dependabot (no pip block). The brotli hash is for the Linux cp312 wheel; verify on the first CI run.
 # Install: python -m pip install --require-hashes --only-binary :all: -r .github/requirements-ci.txt
 brotli==1.2.1 \
     --hash=sha256:4b9dd0173ca5e01d1eb307d3c184fe8c09bdc168ede560889b1018d216d38c61
