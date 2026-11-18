@@ -60,7 +60,7 @@
 <div class="wrap">
     <h2>一分钟了解思路</h2>
     <p>助手读取外部内容（聊天消息、邮件、附件、网页、工具输出）时，可能被藏在其中的指令欺骗，这叫提示注入。Hearthward 并不试图让模型免疫，而是在模型外面加一层防护，做三件事：检查进来的内容，限制助手可以做的事，检查发出去的内容。</p>
-    <p>示意图在<a href="index.html#how">首页</a>。防护层计划做成 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）的插件。以下内容是设计和目前的进展，不是成品。</p>
+    <p>示意图在<a href="index.html#how">首页</a>。防护层计划做成 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）的插件（可以添加到它上面的附加程序）。以下内容是设计和目前的进展，不是成品。</p>
   </div>
 </section>
   <section id="threshold">
@@ -72,7 +72,7 @@
       <li>也可以再让一个不带任何工具的小型本地模型复查一遍。它只能判断文字，不能执行任何操作。</li>
       <li>看起来可疑的文字会先交给你处理，而不是直接放行。你回复 <code>follow &lt;id&gt;</code>（继续）或 <code>ignore &lt;id&gt;</code>（忽略）即可。</li>
       <li>通过检查的文字会被标记隔开，并告诉模型只把它当作资料，而不是命令。这一步是尽力而为。</li>
-      <li>图片可以用 OCR 工具（识别图片中的文字，使用 Tesseract）读取，并检查常见的诈骗迹象，支持英文和中文。</li>
+      <li>图片可以用 OCR 工具（Tesseract，能识别图片里的文字）读取，并检查常见的诈骗迹象，支持英文和中文。</li>
     </ul>
   </div>
 </section>
