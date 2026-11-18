@@ -5,7 +5,7 @@
   --head:Bitter,Georgia,serif;--mono:ui-monospace,Consolas,Menlo,monospace;--body:var(--font-body)}
 html{color-scheme:light}
 /* dark mode: only when the visitor picks it (toggle in the header); default is light */
-html[data-theme=dark]{color-scheme:dark;--bg:#151B23;--band:#1B232D;--hero:#18202A;--fg:#EAEFF4;--muted:#B5C1CD;--accent:#F2B544;--accent-fg:#151B23;--card:#232D39;--line:#3A4859;--code:#0F141A;--note:#273240;--noteline:#C98F3B;--foot:#10151B;--tline:#8596A8}
+html[data-theme=dark]{color-scheme:dark;--bg:#17191C;--band:#1E2124;--hero:#1B1E21;--fg:#EEF0F2;--muted:#B8BEC4;--accent:#F2B544;--accent-fg:#17191C;--card:#262A2E;--line:#3C4247;--code:#101214;--note:#2C2E32;--noteline:#C98F3B;--foot:#121416;--tline:#8A949C}
 @font-face{font-family:"HW Sans Body";font-weight:200 900;font-style:normal;font-display:swap;src:url(fonts/hw-sans-body-vf.woff2) format("woff2")}
 @font-face{font-family:Bitter;font-weight:600;font-style:normal;font-display:swap;src:url(fonts/bitter-600-latin.woff2) format("woff2")}
 @font-face{font-family:"HW Han Body";font-weight:400 500;font-style:normal;font-display:swap;src:url(fonts/hw-han-body-450.woff2) format("woff2")}
