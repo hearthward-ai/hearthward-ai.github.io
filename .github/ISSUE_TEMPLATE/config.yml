@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security problem (private)
+    url: https://github.com/hearthward-ai/hearthward-ai.github.io/security/policy
+    about: Please do not open a public issue for security problems or private information. Follow the security policy instead.
