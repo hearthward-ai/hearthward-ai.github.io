@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 on:
   pull_request:
   push:
@@ -23,9 +23,9 @@ jobs:
       - name: Install brotli (lets the leak scan read the self-hosted .woff2 fonts; official Google package, version pinned)
         run: python -m pip install --disable-pip-version-check --no-input brotli==1.2.1
       - name: Leak scan, generic patterns only
-        run: python -I -B tools/leakcheck.py . --no-allowlist --git-tracked
+        run: python -E -P -B tools/leakcheck.py . --no-allowlist --git-tracked
       - name: Local structure check (broken local links, missing alt, CDN/script pins, banned words)
-        run: python -I -B tools/sitecheck.py .
+        run: python -E -P -B tools/sitecheck.py .
       - name: Link check (internal only on PRs; the weekly run also checks external links)
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:

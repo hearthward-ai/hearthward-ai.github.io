@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearthward roadmap and devlog</title>
+<meta name="description" content="What Hearthward plans to build, where each part stands, and a short log of progress so far.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hearthward roadmap and devlog">
+<meta property="og:description" content="What Hearthward plans to build, where each part stands, and a short log of progress so far.">
+<meta property="og:url" content="https://hearthward.ai/roadmap.html">
+<meta property="og:image" content="https://hearthward.ai/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hearthward 煦坞 logo">
+<meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6E9D8">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#17191C'}}catch(e){}})();</script>
+<link rel="canonical" href="https://hearthward.ai/roadmap.html">
+<link rel="alternate" hreflang="en" href="https://hearthward.ai/roadmap.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://hearthward.ai/zh/roadmap.html">
+<link rel="alternate" hreflang="x-default" href="https://hearthward.ai/roadmap.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/bitter-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hw-sans-body-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hw-han-toggle-450.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<div class="wrap">
+  <div class="tools">
+  <button type="button" class="themesw" aria-pressed="false" aria-label="Dark mode"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
+  <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN<span class="sr"> (current language: English)</span></span><a href="zh/roadmap.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="中文 (Simplified Chinese)">中文</a></div>
+  </div>
+  <a href="index.html"><img class="logo logo-light" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞, home page" width="289" height="64">
+  <img class="logo logo-dark" src="brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="289" height="64" loading="lazy"></a>
+  <h1>Roadmap and devlog</h1>
+  <p class="tagline">Early stage. Everything here is a plan or a progress note, not a release.</p>
+  <nav aria-label="Page sections">
+    <a href="index.html">Home</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#devlog">Devlog</a>
+  </nav>
+</div>
+</header>
+
+<main id="main">
+  <section id="roadmap">
+<div class="wrap">
+    <h2>Roadmap</h2>
+    <p>Last updated: 2026-11-18.</p>
+    <p>No dates are promised, and the order may change. This is a hobby project that moves around my studies, so progress comes in bursts. Status words:</p>
+    <ul>
+      <li><strong>Done</strong>: built and working, as far as tested so far.</li>
+      <li><strong>In progress</strong>: being built or tested privately.</li>
+      <li><strong>Planned</strong>: not started.</li>
+      <li><strong>Blocked</strong>: waiting on something outside my control.</li>
+    </ul>
+    <h3>Done so far</h3>
+    <ul>
+      <li>A first working version of the guard with automated tests and an attack test kit (not published yet)</li>
+      <li>A Gmail connection that can only send email you have approved, built and tested privately</li>
+      <li>This website, in English and Simplified Chinese, with a privacy policy</li>
+    </ul>    <h3>In progress</h3>
+    <ul>
+      <li>Improving and testing the guard: Threshold, Knock and Gatehouse</li>
+      <li>Chatting with the assistant in a chat app (Discord first)</li>
+      <li>Reminders, deadlines and a daily brief</li>
+      <li>Sending email only to an approved recipient list and only after you say yes</li>
+    </ul>
+    <h3>Planned</h3>
+    <ul>
+      <li>A workload planner that spreads tasks across the week</li>
+      <li>A public code release with the guard and its tests, once a complete, tested version is ready</li>
+      <li>Setup notes and PC requirements to go with that release</li>
+    </ul>
+    <h3>Blocked</h3>
+    <ul>
+      <li>Reading your email inbox through the guard: this needs Google&rsquo;s permission to read email, so it is not done yet</li>
+    </ul>
+  </div>
+</section>
+  <section id="devlog">
+<div class="wrap">
+    <h2>Devlog</h2>
+    <h3>2026-11-18</h3>
+    <ul>
+      <li>Added pages explaining how the guard works, a FAQ and this roadmap.</li>
+      <li>Guard code and its test and attack-test kit are being prepared for a public release (not published yet).</li>
+    </ul>
+    <h3>2026-11-17</h3>
+    <ul>
+      <li>Home page reorganised around the assistant, with a softer, more careful description of the guard.</li>
+      <li>Light and dark mode.</li>
+      <li>Privacy policy clarified: the project is early, and what the Gmail connection can and cannot do.</li>
+      <li>Automated checks added to this site&rsquo;s repository, and a security policy.</li>
+    </ul>
+    <h3>2026-11-16</h3>
+    <ul>
+      <li>Site restyled, with English and Simplified Chinese pages and self-hosted fonts.</li>
+      <li>Added the how-it-works diagram, with Knock shown as the step for actions.</li>
+      <li>Privacy policy for the Gmail connection published.</li>
+      <li>Custom domain set up.</li>
+    </ul>
+    <p>More entries will be added here as parts become ready. For the design behind the guard, see <a href="how-it-works.html">how it works</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+  <p><a href="index.html">Home</a> · <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Code licence: Apache-2.0 (once the code is released) · &copy; TonyC115</p>
+</div>
+</footer>
+<script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F6E9D8'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+</body>
+</html>
