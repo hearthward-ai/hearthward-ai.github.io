@@ -5,7 +5,7 @@
   --head:Bitter,Georgia,serif;--mono:ui-monospace,Consolas,Menlo,monospace;--body:var(--font-body)}
 html{color-scheme:light}
 /* dark mode: only when the visitor picks it (toggle in the header); default is light */
-html[data-theme=dark]{color-scheme:dark;--bg:#17191C;--band:#1E2124;--hero:#1B1E21;--fg:#EEF0F2;--muted:#B8BEC4;--accent:#F2B544;--accent-fg:#17191C;--card:#262A2E;--line:#3C4247;--code:#101214;--note:#2C2E32;--noteline:#C98F3B;--foot:#121416;--tline:#8A949C}
+html[data-theme=dark]{color-scheme:dark;--bg:#17191C;--band:#1E2124;--hero:#1E1D1E;--fg:#EEF0F2;--muted:#B8BEC4;--accent:#F2B544;--accent-fg:#17191C;--card:#262A2E;--line:#3C4247;--code:#101214;--note:#2C2E32;--noteline:#C98F3B;--foot:#121416;--tline:#8A949C}
 @font-face{font-family:"HW Sans Body";font-weight:200 900;font-style:normal;font-display:swap;src:url(fonts/hw-sans-body-vf.woff2) format("woff2")}
 @font-face{font-family:Bitter;font-weight:600;font-style:normal;font-display:swap;src:url(fonts/bitter-600-latin.woff2) format("woff2")}
 @font-face{font-family:"HW Han Body";font-weight:400 500;font-style:normal;font-display:swap;src:url(fonts/hw-han-body-450.woff2) format("woff2")}
@@ -90,7 +90,7 @@ footer p{margin:.3rem 0;max-width:80ch}
 .tools{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin:0 0 14px}
 @media (min-width:700px){.tools{position:absolute;top:0;right:24px;margin:0}}
 .logo-dark,html[data-theme=dark] .logo-light{display:none}
-html[data-theme=dark] .logo-dark{display:block}
+html[data-theme=dark] .logo-dark{display:block;border-radius:12px;box-shadow:0 0 0 1px #4A4039,0 6px 18px rgba(0,0,0,.45)}
 /* light/dark toggle: hidden without JS (no JS = light mode); same pill look as the language slider */
 .themesw{display:none;position:relative;grid-template-columns:1fr 1fr;width:88px;height:44px;margin:0;padding:3px;border:1px solid var(--tline);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer;font:inherit}
 .js .themesw{display:grid}
