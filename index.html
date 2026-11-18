@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Hearthward 煦坞: a private AI assistant for home (early stage)</title>
-<meta name="description" content="Hearthward (煦坞): a free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.">
+<title>Hearthward 煦坞: your own always-on AI assistant (early stage)</title>
+<meta name="description" content="Hearthward (煦坞): a free, private AI assistant being built to run 24/7 on your own computer with a local model, with a guard that aims to reduce the risk of outside text taking control.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hearthward 煦坞 (early stage)">
-<meta property="og:description" content="A free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.">
+<meta property="og:description" content="A free, private AI assistant being built to run 24/7 on your own computer with a local model, with a guard that aims to reduce the risk of outside text taking control.">
 <meta property="og:url" content="https://hearthward.ai/">
 <meta property="og:image" content="https://hearthward.ai/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Hearthward 煦坞 logo: a free, private AI assistant for your own computer (early stage)">
+<meta property="og:image:alt" content="Hearthward 煦坞 logo">
 <meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
@@ -33,20 +33,23 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#what">Skip to content</a>
 <header>
 <div class="wrap">
-  <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN</span><a href="zh/index.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="简体中文">中文</a></div>
+  <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN<span class="sr"> (current language: English)</span></span><a href="zh/index.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="中文 (Simplified Chinese)">中文</a></div>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="brand/hearthward-lockup-bilingual-dark-2x.png">
     <img class="logo" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞" width="289" height="64">
   </picture>
-  <h1>A personal AI assistant that runs 24/7 on your own computer, private by default.</h1>
-  <p class="status">Early stage: in development, not ready to download.</p>
+  <h1>Your own always-on AI assistant, built to run privately on your own computer.</h1>
+  <p class="status" role="status">Early stage: in development, not ready to download.</p>
+  <p class="tagline">Reminders, deadlines and drafts, on a PC you own.</p>
   <nav aria-label="Page sections">
-    <a href="#what">What it is</a>
+    <a href="#what">What it does</a>
+    <a href="#why">Why I'm building it</a>
+    <a href="#family">Family use</a>
     <a href="#guard">The guard</a>
     <a href="#how">How it works</a>
-    <a href="#family">Family use</a>
     <a href="#status">Status</a>
     <a href="#disclaimer">Disclaimer</a>
     <a href="privacy.html">Privacy policy</a>
@@ -57,14 +60,45 @@
 <main>
   <section id="what">
 <div class="wrap">
-    <h2>What this is</h2>
-    <p>Hearthward is a free assistant that runs on your own computer with a local, open-weight language model. It is
-      meant to keep an eye on your calendar, messages, email and deadlines, and to remind you before something
-      slips instead of waiting to be asked. It is free to use and runs on a computer you already own: a capable PC with a modern graphics card (exact
-      requirements will come with the release). Nothing leaves your computer unless a feature needs it.</p>
-    <p>It is built on the open-source Hermes Agent (Nous Research).</p>
-    <p>It is a personal engineering project by Tony, a university student. It is not a product or a company, and
-      nobody can sign up for it yet.</p>
+    <h2>What it does</h2>
+    <p>Hearthward is a personal AI assistant, designed to run around the clock on your own computer with an open
+      model that you download and run yourself. Instead of waiting to be asked, it is meant to remind you before
+      something slips.</p>
+    <p>You are meant to talk to it in a chat app such as Discord, like texting a person. It answers there, and
+      anything that acts on your behalf waits there for your OK.</p>
+    <h3>A day with it (planned)</h3>
+    <ul>
+      <li>Morning: a short brief of what is due and what is coming up.</li>
+      <li>Afternoon: a reminder before a deadline slips.</li>
+      <li>Evening: a draft email for you to read and approve before it is sent.</li>
+    </ul>
+    <p>Your data stays on your computer, and the model runs locally. Features like sending an email or using a chat
+      app necessarily send that message through the service you choose.</p>
+    <p>It costs nothing to use. You need a capable PC with a modern graphics card (exact requirements will come with
+      the release).</p>
+    <p>It is built on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a> (Nous Research), an
+      open-source tool for running AI assistants.</p>
+    <p>It is a personal engineering project by Tony (GitHub: TonyC115), a university student. It is not a product or
+      a company, and nobody can sign up for it yet.</p>
+  </div>
+</section>
+
+  <section id="why">
+<div class="wrap">
+    <h2>Why I am building it</h2>
+    <p>I wanted a 24/7 assistant for my own student life: tracking schedules and deadlines, planning my workload
+      across the week and drafting emails. Many AI helpers that can do this cost a monthly fee and run on someone
+      else's servers. I wanted something free and private that I, and people close to me, could trust with daily
+      tasks.</p>
+    <p>The name: 煦坞 (xù wù) means, roughly, a warm, sheltered harbour.</p>
+  </div>
+</section>
+
+  <section id="family">
+<div class="wrap">
+    <h2>For you, or an add-on for your family</h2>
+    <p>Hearthward is mainly a personal tool. If you want, it could also be set up to help family members at home,
+      each with their own limits on what it may do and whom it may contact.</p>
   </div>
 </section>
 
@@ -72,24 +106,25 @@
 <div class="wrap">
     <h2>A guard for outside text</h2>
     <p>An assistant that reads web pages, emails and messages can be tricked by instructions hidden in them
-      (this is called prompt injection). Hearthward includes a guard that blocks harmful instructions hidden in
-      that text. It is a supporting feature, built to make the assistant safe enough to leave running. It has
-      three parts:</p>
+      (this is called prompt injection). Hearthward includes a guard that tries to catch and contain harmful
+      instructions hidden in that text. It lowers the risk; it cannot remove it. It is a supporting feature, built
+      to make the assistant safe enough to leave running. This is the planned design, and the guard is still in
+      development. It has three parts:</p>
     <div class="cards">
       <div class="card">
         <h3>Threshold</h3>
-        <p>Outside text is scanned for hidden text and injection tricks, then fenced off so the model is told to treat it as
-          data, not as orders (best effort).</p>
+        <p>Outside text is meant to be scanned for hidden text and injection tricks, then fenced off so the model is
+          told to treat it as data, not as orders (best effort).</p>
       </div>
       <div class="card ember">
         <h3>Knock</h3>
-        <p>Any action on your behalf asks first. The model only writes text; sending and changing things happen in
-          fixed code that waits for your yes.</p>
+        <p>By design, any action on your behalf asks first. The model only writes text; sending and changing things
+          are meant to happen in ordinary program code (not the AI) that waits for your yes.</p>
       </div>
       <div class="card">
         <h3>Gatehouse</h3>
-        <p>Replies are checked on the way out, and only approved recipients can be messaged. If the guard can't
-          prove it is active, the assistant stays offline.</p>
+        <p>Replies are meant to be checked on the way out, and only approved recipients can be messaged. If the guard
+          can't confirm it is active, the assistant is designed to stay offline.</p>
       </div>
     </div>
   </div>
@@ -101,28 +136,10 @@
     <p>This is the planned design. The guard is in development, so it is not a finished product.</p>
     <p>Knock applies only to actions, such as sending an email. Ordinary replies do not need your approval.</p>
     <figure class="flow">
-      <svg class="hw-h" viewBox="0 0 1200 270" role="img" aria-labelledby="hwt-h hwd-h"><title id="hwt-h">How a message moves through Hearthward: message, Threshold, local model, Gatehouse, reply, with Knock as a side branch for actions.</title><desc id="hwd-h">Main line: a message arrives (email, chat or web page). Threshold scans it and fences it off as data. The local model writes text. Gatehouse checks the reply and holds it if unsafe. The reply goes only to approved recipients. Side branch: if the local model wants to take an action such as using a tool, sending an email or changing a file, Knock asks you first, and the action runs only on your yes. The guard parts are in development.</desc><rect class="b plain" x="0" y="10" width="200" height="90" rx="12"/><text class="t" x="100.0" y="50.0" text-anchor="middle">Message</text><text class="s" x="100.0" y="76.0" text-anchor="middle">email, chat, web page</text><path class="a" d="M212 55H236M229 49L237 55L229 61"/><rect class="b guard" x="250" y="10" width="200" height="90" rx="12"/><text class="t" x="350.0" y="50.0" text-anchor="middle">Threshold</text><text class="s" x="350.0" y="76.0" text-anchor="middle">scans and fences it</text><path class="a" d="M462 55H486M479 49L487 55L479 61"/><rect class="b plain" x="500" y="10" width="200" height="90" rx="12"/><text class="t" x="600.0" y="50.0" text-anchor="middle">Local model</text><text class="s" x="600.0" y="76.0" text-anchor="middle">writes text only</text><path class="a" d="M712 55H736M729 49L737 55L729 61"/><rect class="b guard" x="750" y="10" width="200" height="90" rx="12"/><text class="t" x="850.0" y="50.0" text-anchor="middle">Gatehouse</text><text class="s" x="850.0" y="76.0" text-anchor="middle">checks, holds if unsafe</text><path class="a" d="M962 55H986M979 49L987 55L979 61"/><rect class="b plain" x="1000" y="10" width="200" height="90" rx="12"/><text class="t" x="1100.0" y="50.0" text-anchor="middle">Reply</text><text class="s" x="1100.0" y="76.0" text-anchor="middle">approved recipients only</text><path class="a" d="M600 104V160M594 153L600 161L606 153"/><text class="s" x="614" y="140">action? (tool, email, file)</text><rect class="b knock" x="500" y="166" width="200" height="90" rx="12"/><text class="t" x="600.0" y="206.0" text-anchor="middle">Knock</text><text class="s" x="600.0" y="232.0" text-anchor="middle">asks you first</text><path class="a" d="M712 211H736M729 205L737 211L729 217"/><rect class="b plain" x="750" y="166" width="230" height="90" rx="12"/><text class="t" x="865.0" y="206.0" text-anchor="middle">Action runs</text><text class="s" x="865.0" y="232.0" text-anchor="middle">only on your yes</text></svg>
-      <svg class="hw-v" viewBox="0 0 320 760" role="img" aria-labelledby="hwt-v hwd-v"><title id="hwt-v">How a message moves through Hearthward: message, Threshold, local model, Gatehouse, reply, with Knock as a side branch for actions.</title><desc id="hwd-v">Main line: a message arrives (email, chat or web page). Threshold scans it and fences it off as data. The local model writes text. Gatehouse checks the reply and holds it if unsafe. The reply goes only to approved recipients. Side branch: if the local model wants to take an action such as using a tool, sending an email or changing a file, Knock asks you first, and the action runs only on your yes. The guard parts are in development.</desc><rect class="b plain" x="10" y="2" width="300" height="62" rx="12"/><text class="t" x="160.0" y="28.0" text-anchor="middle">Message</text><text class="s" x="160.0" y="54.0" text-anchor="middle">email, chat, web page</text><path class="a" d="M160 68V90M154 83L160 91L166 83"/><rect class="b guard" x="10" y="92" width="300" height="62" rx="12"/><text class="t" x="160.0" y="118.0" text-anchor="middle">Threshold</text><text class="s" x="160.0" y="144.0" text-anchor="middle">scans and fences it</text><path class="a" d="M160 158V180M154 173L160 181L166 173"/><rect class="b plain" x="10" y="182" width="300" height="62" rx="12"/><text class="t" x="160.0" y="208.0" text-anchor="middle">Local model</text><text class="s" x="160.0" y="234.0" text-anchor="middle">writes text only</text><path class="a" d="M160 248V270M154 263L160 271L166 263"/><rect class="b guard" x="10" y="272" width="300" height="62" rx="12"/><text class="t" x="160.0" y="298.0" text-anchor="middle">Gatehouse</text><text class="s" x="160.0" y="324.0" text-anchor="middle">checks, holds if unsafe</text><path class="a" d="M160 338V360M154 353L160 361L166 353"/><rect class="b plain" x="10" y="362" width="300" height="62" rx="12"/><text class="t" x="160.0" y="388.0" text-anchor="middle">Reply</text><text class="s" x="160.0" y="414.0" text-anchor="middle">approved recipients only</text><text class="s" x="160" y="476" text-anchor="middle">Side branch from Local model, for actions</text><path class="a" style="stroke-dasharray:2 6" d="M10 448H310"/><rect class="b plain" x="10" y="492" width="300" height="62" rx="12"/><text class="t" x="160.0" y="518.0" text-anchor="middle">Action?</text><text class="s" x="160.0" y="544.0" text-anchor="middle">tool, email, file</text><path class="a" d="M160 558V580M154 573L160 581L166 573"/><rect class="b knock" x="10" y="582" width="300" height="62" rx="12"/><text class="t" x="160.0" y="608.0" text-anchor="middle">Knock</text><text class="s" x="160.0" y="634.0" text-anchor="middle">asks you first</text><path class="a" d="M160 648V670M154 663L160 671L166 663"/><rect class="b plain" x="10" y="672" width="300" height="62" rx="12"/><text class="t" x="160.0" y="698.0" text-anchor="middle">Action runs</text><text class="s" x="160.0" y="724.0" text-anchor="middle">only on your yes</text></svg>
+      <svg class="hw-h" viewBox="0 0 1200 270" role="img" aria-labelledby="hwt-h hwd-h"><title id="hwt-h">How a message moves through Hearthward: message, Threshold, local model, Gatehouse, reply, with Knock as a side branch for actions.</title><desc id="hwd-h">Main line: a message arrives (email, chat or web page). Threshold scans it and fences it off as data. The local model writes text. Gatehouse checks the reply and holds it if unsafe. The reply is meant to go only to approved recipients. Side branch: if the local model wants to take an action such as using a tool, sending an email or changing a file, Knock asks you first, and the action runs only on your yes. The guard parts are in development.</desc><rect class="b plain" x="0" y="10" width="200" height="90" rx="12"/><text class="t" x="100.0" y="50.0" text-anchor="middle">Message</text><text class="s" x="100.0" y="76.0" text-anchor="middle">email, chat, web page</text><path class="a" d="M212 55H236M229 49L237 55L229 61"/><rect class="b guard" x="250" y="10" width="200" height="90" rx="12"/><text class="t" x="350.0" y="50.0" text-anchor="middle">Threshold</text><text class="s" x="350.0" y="76.0" text-anchor="middle">scans and fences it</text><path class="a" d="M462 55H486M479 49L487 55L479 61"/><rect class="b plain" x="500" y="10" width="200" height="90" rx="12"/><text class="t" x="600.0" y="50.0" text-anchor="middle">Local model</text><text class="s" x="600.0" y="76.0" text-anchor="middle">writes text only</text><path class="a" d="M712 55H736M729 49L737 55L729 61"/><rect class="b guard" x="750" y="10" width="200" height="90" rx="12"/><text class="t" x="850.0" y="50.0" text-anchor="middle">Gatehouse</text><text class="s" x="850.0" y="76.0" text-anchor="middle">checks, holds if unsafe</text><path class="a" d="M962 55H986M979 49L987 55L979 61"/><rect class="b plain" x="1000" y="10" width="200" height="90" rx="12"/><text class="t" x="1100.0" y="50.0" text-anchor="middle">Reply</text><text class="s" x="1100.0" y="76.0" text-anchor="middle">to approved recipients</text><path class="a" d="M600 104V160M594 153L600 161L606 153"/><text class="s" x="614" y="140">action? (tool, email, file)</text><rect class="b knock" x="500" y="166" width="200" height="90" rx="12"/><text class="t" x="600.0" y="206.0" text-anchor="middle">Knock</text><text class="s" x="600.0" y="232.0" text-anchor="middle">asks you first</text><path class="a" d="M712 211H736M729 205L737 211L729 217"/><rect class="b plain" x="750" y="166" width="230" height="90" rx="12"/><text class="t" x="865.0" y="206.0" text-anchor="middle">Action runs</text><text class="s" x="865.0" y="232.0" text-anchor="middle">only on your yes</text></svg>
+      <svg class="hw-v" viewBox="0 0 320 760" role="img" aria-labelledby="hwt-v hwd-v"><title id="hwt-v">How a message moves through Hearthward: message, Threshold, local model, Gatehouse, reply, with Knock as a side branch for actions.</title><desc id="hwd-v">Main line: a message arrives (email, chat or web page). Threshold scans it and fences it off as data. The local model writes text. Gatehouse checks the reply and holds it if unsafe. The reply is meant to go only to approved recipients. Side branch: if the local model wants to take an action such as using a tool, sending an email or changing a file, Knock asks you first, and the action runs only on your yes. The guard parts are in development.</desc><rect class="b plain" x="10" y="2" width="300" height="62" rx="12"/><text class="t" x="160.0" y="28.0" text-anchor="middle">Message</text><text class="s" x="160.0" y="54.0" text-anchor="middle">email, chat, web page</text><path class="a" d="M160 68V90M154 83L160 91L166 83"/><rect class="b guard" x="10" y="92" width="300" height="62" rx="12"/><text class="t" x="160.0" y="118.0" text-anchor="middle">Threshold</text><text class="s" x="160.0" y="144.0" text-anchor="middle">scans and fences it</text><path class="a" d="M160 158V180M154 173L160 181L166 173"/><rect class="b plain" x="10" y="182" width="300" height="62" rx="12"/><text class="t" x="160.0" y="208.0" text-anchor="middle">Local model</text><text class="s" x="160.0" y="234.0" text-anchor="middle">writes text only</text><path class="a" d="M160 248V270M154 263L160 271L166 263"/><rect class="b guard" x="10" y="272" width="300" height="62" rx="12"/><text class="t" x="160.0" y="298.0" text-anchor="middle">Gatehouse</text><text class="s" x="160.0" y="324.0" text-anchor="middle">checks, holds if unsafe</text><path class="a" d="M160 338V360M154 353L160 361L166 353"/><rect class="b plain" x="10" y="362" width="300" height="62" rx="12"/><text class="t" x="160.0" y="388.0" text-anchor="middle">Reply</text><text class="s" x="160.0" y="414.0" text-anchor="middle">to approved recipients</text><text class="s" x="160" y="476" text-anchor="middle">Side branch from Local model, for actions</text><path class="a" style="stroke-dasharray:2 6" d="M10 448H310"/><rect class="b plain" x="10" y="492" width="300" height="62" rx="12"/><text class="t" x="160.0" y="518.0" text-anchor="middle">Action?</text><text class="s" x="160.0" y="544.0" text-anchor="middle">tool, email, file</text><path class="a" d="M160 558V580M154 573L160 581L166 573"/><rect class="b knock" x="10" y="582" width="300" height="62" rx="12"/><text class="t" x="160.0" y="608.0" text-anchor="middle">Knock</text><text class="s" x="160.0" y="634.0" text-anchor="middle">asks you first</text><path class="a" d="M160 648V670M154 663L160 671L166 663"/><rect class="b plain" x="10" y="672" width="300" height="62" rx="12"/><text class="t" x="160.0" y="698.0" text-anchor="middle">Action runs</text><text class="s" x="160.0" y="724.0" text-anchor="middle">only on your yes</text></svg>
       <figcaption>Dashed outline: the guard parts, in development. Plain outline: the rest of the assistant.</figcaption>
     </figure>
-  </div>
-</section>
-
-  <section id="family">
-<div class="wrap">
-    <h2>For you, or an add-on for your family</h2>
-    <p>Hearthward is mainly a personal tool. If you want, it can also be set up to help family members at home,
-      each with their own limits on what it may do and whom it may contact.</p>
-  </div>
-</section>
-
-  <section id="why">
-<div class="wrap">
-    <h2>Why I am building it</h2>
-    <p>I wanted a 24/7 assistant for my own student life: tracking schedules and deadlines, planning my workload
-      across the week and drafting emails. Most AI helpers that can do this cost a monthly fee and send everything
-      to someone else's servers. I wanted something free and private that I, and people close to me, could trust
-      with daily tasks.</p>
   </div>
 </section>
 
@@ -130,12 +147,14 @@
 <div class="wrap">
     <h2>Status</h2>
     <p>Hearthward is in early development and is not released. Parts of it are being built and tested privately.
-      There is no download yet. For how data is handled, see the <a href="privacy.html">privacy policy</a>.</p>
+      Everything described on this page is the plan. There is no download yet. For how data is handled, see the
+      <a href="privacy.html">privacy policy</a>.</p>
     <h3>Planned</h3>
     <ul>
+      <li>Chatting with it in a chat app (Discord first)</li>
       <li>Reminders, deadlines and a daily brief</li>
       <li>Sending email, only to an approved recipient list and only after you say yes</li>
-      <li>Reading your email inbox through the guard (this needs a stronger Google permission, so it is not done yet)</li>
+      <li>Reading your email inbox through the guard (this needs Google's permission to read email, so it is not done yet)</li>
       <li>A workload planner that spreads tasks across the week</li>
       <li>A public code release with the guard and its tests, once a complete, tested version is ready</li>
     </ul>
@@ -150,12 +169,12 @@
     <div class="disclaimer">
       <ul>
         <li>A personal hobby project, provided as-is with no warranty of any kind.</li>
-        <li>Not financial, legal, medical or professional advice. Any research features are for learning only.</li>
+        <li>Not financial, legal, medical or professional advice.</li>
         <li>Local AI models make mistakes. Check anything important yourself.</li>
-        <li>The guard is best-effort. It lowers prompt-injection risk but can't promise to stop every attack.</li>
+        <li>The guard is best-effort. It lowers prompt-injection risk but can't promise to catch every attack.</li>
         <li>You're responsible for your own data, your own accounts and following each service's terms (Google, Discord, etc.).</li>
         <li>Not affiliated with or endorsed by Google, Nous Research (Hermes Agent), or any model maker.</li>
-        <li>Hearthward never asks for your passwords. Keys and logins stay on your machine and are entered by you.</li>
+        <li>Hearthward is designed never to ask for your passwords. Keys and logins stay on your machine and are entered by you.</li>
       </ul>
     </div>
   </div>
@@ -165,7 +184,7 @@
 <footer>
 <div class="wrap">
   <p>Hearthward is a personal hobby project, provided as-is. Nothing here is financial, legal, medical or professional advice. See the <a href="#disclaimer">disclaimer</a>.</p>
-  <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Apache-2.0 · &copy; TonyC115</p>
+  <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Code licence: Apache-2.0 (once the code is released) · &copy; TonyC115</p>
 </div>
 </footer>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>

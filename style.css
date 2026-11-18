@@ -104,15 +104,24 @@ main .wrap>.flow{grid-column:1/-1;max-width:none}
 .flow svg{display:block;width:100%;height:auto;font-family:var(--body)}
 .flow .hw-v{max-width:360px;margin:0 auto}
 .flow .hw-h{display:none}
-@media (min-width:900px){.flow .hw-h{display:block}.flow .hw-v{display:none}}
+@media (min-width:1100px){.flow .hw-h{display:block}.flow .hw-v{display:none}}
 .flow .b{fill:var(--card);stroke:var(--line);stroke-width:2}
 .flow .b.guard,.flow .b.knock{stroke-width:2.5;stroke-dasharray:7 5}
 .flow .b.guard{stroke:var(--accent)}
 .flow .b.knock{stroke:#BF4E18}
 @media (prefers-color-scheme:dark){.flow .b.knock{stroke:var(--flame)}}
-.flow .t{fill:var(--fg);font-size:18px;font-weight:700}
-.flow .s{fill:var(--muted);font-size:13.5px}
-:lang(zh-Hans) .flow .t{font-size:17px}
-:lang(zh-Hans) .flow .s{font-size:13px}
+.flow .t{fill:var(--fg);font-size:19px;font-weight:700}
+.flow .s{fill:var(--muted);font-size:15px}
+.flow .hw-h .t{font-size:21px}
+.flow .hw-h .s{font-size:16.5px}
+:lang(zh-Hans) .flow .t{font-size:18px}
+:lang(zh-Hans) .flow .s{font-size:14.5px}
+:lang(zh-Hans) .flow .hw-h .t{font-size:19px}
+:lang(zh-Hans) .flow .hw-h .s{font-size:16px}
 .flow .a{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .flow figcaption{margin-top:.8rem;color:var(--muted);font-size:.92rem}
+
+/* skip link and screen-reader-only text */
+.skip{position:absolute;left:8px;top:-60px;z-index:10;padding:10px 16px;background:var(--accent);color:var(--accent-fg);font-weight:700;border-radius:0 0 8px 8px;text-decoration:none}
+.skip:focus{top:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}

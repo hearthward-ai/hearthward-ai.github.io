@@ -7,13 +7,13 @@
 
 # Hearthward (煦坞)
 
-A free, private AI assistant being built to run at home on a local model, with a guard designed to stop outside text from taking control.
+A free, private AI assistant being built to run at home on a local model, with a guard that aims to reduce the risk of outside text taking control.
 
 **Status:** Early stage. Code and docs are on the way.
 
 ## License
 
-The code in this project is released under the [Apache License 2.0](LICENSE). Third-party font credits are in [NOTICE](NOTICE).
+The code in this project will be released under the [Apache License 2.0](LICENSE). Third-party font credits are in [NOTICE](NOTICE).
 
 ## Trademarks
 
