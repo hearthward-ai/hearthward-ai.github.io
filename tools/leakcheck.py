@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 """leakcheck.py - scan a folder for private data before anything is published.
 
-Python standard library only. Run it on a folder before you publish it.
+Python standard library only. Shared by the guard plugin, template pack and
+bench repos.
 
 What it checks
   1. Generic patterns (safe to run in CI): Discord IDs and tokens, API token
      shapes, SimpleX/Telegram links and IDs, emails, phone numbers, private
      IPs, user-profile and WSL paths, crypto addresses, high-entropy strings.
-  2. An optional private term list kept OUTSIDE the repo (names, IDs, hostnames ...),
-     read only from the LEAKCHECK_TERMS environment variable (a file path).
+  2. A private term list kept OUTSIDE every repo (names, IDs, hostnames ...).
      Hits are printed masked (first letter + length), never in full.
   3. Structure: refused files (.env, auth.json, state.db*, sessions/,
-     memories/, logs/, *.pyc, archives, binaries, keys), an optional path
-     allowlist, and images that still carry EXIF/text metadata.
-
-With LEAKCHECK_TERMS unset, only the generic patterns and structure rules run.
-Term file format: one term per line; "re:<regex>" for a regex; "[category]" starts
-a group; "#" comments.
+     memories/, logs/, *.pyc, keys), archives and containers (by extension AND by file signature),
+     binaries by extension, any file with a NUL byte or invalid UTF-8, an optional path allowlist, and
+     images that still carry EXIF/text metadata. Fonts under fonts/ are read through their name table.
+     Extra refusal rules and private terms come from the private term file ([refuse-glob], [refuse-dir],
+     [refuse-path] sections), so this file names nothing private.
+  --dump-mode is only for the pre-push hook's dump of git patches (NULs scanned, not refused).
 
 Output: one line per hit, "path:line:col: category [hint]". The matched text
 itself is never printed. Exit code 0 = clean, 1 = hits, 2 = usage/config error.
@@ -35,6 +35,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 TERMS_ENV = "LEAKCHECK_TERMS"
+DEFAULT_TERMS = Path.home() / "Hearthward-Private" / "private-terms.txt"
 ALLOWLIST_NAME = "export-allowlist.txt"
 
 # ---------------------------------------------------------------- structure
@@ -42,10 +43,21 @@ REFUSE_NAMES = {"auth.json", ".env", "id_rsa", "id_ed25519", "id_ecdsa", "id_dsa
                 "known_hosts", "authorized_keys", ".netrc", ".pypirc", ".npmrc"}
 REFUSE_NAME_GLOBS = ["state.db*", ".env.*", "*.pyc", "*.pyo", "*.pem", "*.key",
                      "*.p12", "*.pfx", "*.kdbx", "*.sqlite", "*.sqlite3", "*.db",
-                     "*.db-wal", "*.db-shm", "*.log", "*.sqlite*", "*.db-journal", "*.bak-*"]
-REFUSE_DIRS = {"sessions", "memories", "logs", "__pycache__", "downloads", "private"}
+                     "*.db-wal", "*.db-shm", "*.log",
+                     "*.sqlite*", "*.sqlite3*", "*.db-journal", "*.bak-*"]
+REFUSE_DIRS = {"sessions", "memories", "logs", "__pycache__"}
 REFUSE_PATH_GLOBS: list[str] = []
+# More refusals (file-name globs, directory names, path globs) live in the PRIVATE term file, sections
+# [refuse-glob], [refuse-dir] and [refuse-path], so this public file names nothing private.
+# load_terms() fills these; refused_reason() uses them.
+EXTRA_NAME_GLOBS: list[str] = []
+EXTRA_DIRS: set[str] = set()
+EXTRA_PATH_GLOBS: list[str] = []
 SQLITE_MAGIC = b"SQLite format 3\x00"   # any SQLite database, whatever its name
+# Containers and compressed formats are refused by their first bytes, whatever the file name is.
+MAGIC_REFUSE = [b"PK\x03\x04", b"PK\x05\x06", b"\x1f\x8b", b"7z\xbc\xaf\x27\x1c", b"\xfd7zXZ\x00",
+                b"\x28\xb5\x2f\xfd", b"\xd0\xcf\x11\xe0", b"%PDF-", b"Rar!\x1a\x07", b"LZIP"]
+_BZ2_RE = re.compile(rb"BZh[1-9]1AY&SY")
 ARCHIVE_EXT = {".zip", ".tar", ".gz", ".tgz", ".bz2", ".xz", ".7z", ".rar",
                ".zst", ".whl", ".egg", ".jar", ".apk", ".iso", ".cab", ".msi"}
 BINARY_EXT = {".exe", ".dll", ".so", ".dylib", ".bin", ".o", ".a", ".lib", ".obj",
@@ -149,8 +161,11 @@ class Term:
 
 
 def load_terms(path: Path) -> list[Term]:
+    """Read the private list. Sections [refuse-glob], [refuse-dir], [refuse-path] feed the refusal rules
+    (module-level EXTRA_*, reset on every call); every other section holds terms."""
     terms: list[Term] = []
     category = "private"
+    EXTRA_NAME_GLOBS.clear(); EXTRA_DIRS.clear(); EXTRA_PATH_GLOBS.clear()
     for raw in path.read_text(encoding="utf-8-sig").splitlines():
         line = raw.strip()
         if not line or line.startswith("#"):
@@ -158,6 +173,12 @@ def load_terms(path: Path) -> list[Term]:
         if line.startswith("[") and line.endswith("]"):
             category = line[1:-1].strip() or "private"
             continue
+        if category == "refuse-glob":
+            EXTRA_NAME_GLOBS.append(line.lower()); continue
+        if category == "refuse-dir":
+            EXTRA_DIRS.add(line.lower()); continue
+        if category == "refuse-path":
+            EXTRA_PATH_GLOBS.append(line.lower()); continue
         if line.startswith("re:"):
             rx = re.compile(line[3:].strip(), re.I)
         else:
@@ -229,13 +250,13 @@ def refused_reason(rel: str) -> str | None:
     name = parts[-1]
     low = name.lower()
     for d in parts[:-1]:
-        if d.lower() in REFUSE_DIRS:
+        if d.lower() in REFUSE_DIRS or d.lower() in EXTRA_DIRS:
             return f"refused-dir:{d}"
     if low in REFUSE_NAMES:
         return "refused-file"
-    if any(fnmatch.fnmatch(rel.lower(), g) for g in REFUSE_PATH_GLOBS):
+    if any(fnmatch.fnmatch(rel.lower(), g) for g in REFUSE_PATH_GLOBS + EXTRA_PATH_GLOBS):
         return "refused-file"
-    if any(fnmatch.fnmatch(low, g) for g in REFUSE_NAME_GLOBS):
+    if any(fnmatch.fnmatch(low, g) for g in REFUSE_NAME_GLOBS + EXTRA_NAME_GLOBS):
         return "refused-file"
     suf = Path(low).suffix
     if suf in ARCHIVE_EXT:
@@ -355,7 +376,30 @@ def scan_text(rel: str, text: str, terms: list[Term], hits: list[Hit]) -> None:
             hits.append(Hit(rel, ln, 1, "image-metadata", "svg metadata"))
 
 
-def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit]) -> None:
+_ASCII_RUN = re.compile(rb"[\x20-\x7e\t]{6,}")
+_UTF16_RUN = re.compile(rb"(?:[\x20-\x7e]\x00){6,}")
+
+
+def binary_strings(data: bytes) -> list[str]:
+    """Printable strings of a binary: ASCII runs and UTF-16LE (ASCII-range) runs, 6+ characters each."""
+    out = [m.group(0).decode("ascii") for m in _ASCII_RUN.finditer(data)]
+    out += [m.group(0).decode("utf-16-le") for m in _UTF16_RUN.finditer(data)]
+    return out
+
+
+def magic_reason(head: bytes) -> str | None:
+    if head.startswith(SQLITE_MAGIC):                # a renamed database (e.g. a shelf saved as .txt)
+        return "refused-sqlite"
+    if any(head.startswith(m) for m in MAGIC_REFUSE) or _BZ2_RE.match(head) \
+            or head[257:262] == b"ustar":
+        return "refused-archive"
+    return None
+
+
+def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit], dump_mode: bool = False) -> None:
+    """dump_mode is ONLY for a text dump of git patches (the pre-push hook's patch/meta folder), which can
+    carry raw bytes of a binary diff. Everywhere else a file with a NUL byte, or that is not valid UTF-8,
+    is refused (every added blob is checked strictly on its own path by the hook)."""
     rel = path.relative_to(root).as_posix()
     for t in terms:                                  # file names can leak too
         for m in t.regex.finditer(rel):
@@ -369,16 +413,19 @@ def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit]) -> None:
         hits.append(Hit(rel, 0, 0, reason))
         return
     try:
-        with open(path, "rb") as f:
-            head = f.read(len(SQLITE_MAGIC))
-    except OSError as e:
+        data = path.read_bytes()
+    except OSError as e:                             # cannot read it = cannot vouch for it: fail closed
         hits.append(Hit(rel, 0, 0, "unreadable", type(e).__name__))
         return
-    if head == SQLITE_MAGIC:                         # a renamed database (e.g. saved as .txt)
+    magic = None if dump_mode else magic_reason(data[:600])
+    if magic:
+        hits.append(Hit(rel, 0, 0, magic))
+        return
+    if data.startswith(SQLITE_MAGIC):
         hits.append(Hit(rel, 0, 0, "refused-sqlite"))
         return
     suf = path.suffix.lower()
-    if is_site_font(rel):
+    if is_site_font(rel) and not dump_mode:
         try:
             strings = font_strings(path)
         except Exception as e:                       # incl. missing fontTools/brotli
@@ -387,7 +434,7 @@ def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit]) -> None:
         for label, txt in strings:
             scan_text(f"{rel}#{label}", txt, terms, hits)
         return
-    if suf in IMAGE_EXT:
+    if suf in IMAGE_EXT and not dump_mode:
         try:
             meta = image_metadata(path)
         except ValueError as e:
@@ -396,15 +443,25 @@ def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit]) -> None:
         if meta:
             hits.append(Hit(rel, 0, 0, "image-metadata", ",".join(meta)))
         return
-    data = path.read_bytes()
-    if data[:2] in (b"\xff\xfe", b"\xfe\xff"):
-        text = data.decode("utf-16", errors="replace")
-    elif b"\x00" in data[:8192]:
+    if dump_mode:
+        views = [data.decode("utf-8", errors="replace"),                         # full text
+                 data.replace(b"\x00", b"").decode("utf-8", errors="replace"),    # NUL-split, UTF-16/32 ASCII
+                 "\n".join(binary_strings(data))]                                # printable runs
+    elif data[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        # a BOM'd file: scan it as UTF-16 AND as raw bytes without NULs, so the BOM cannot hide ASCII text
+        views = [data.decode("utf-16", errors="replace"),
+                 data.replace(b"\x00", b"").decode("utf-8", errors="replace")]
+    elif b"\x00" in data:                            # whole file, not just the first 8 KB
         hits.append(Hit(rel, 0, 0, "refused-binary"))
         return
     else:
-        text = data.decode("utf-8", errors="replace")
-    scan_text(rel, text, terms, hits)
+        try:
+            views = [data.decode("utf-8")]
+        except UnicodeDecodeError:
+            hits.append(Hit(rel, 0, 0, "refused-binary", "not valid UTF-8"))
+            return
+    for text in views:
+        scan_text(rel, text, terms, hits)
 
 
 def iter_files(root: Path, git_tracked: bool):
@@ -421,9 +478,12 @@ def iter_files(root: Path, git_tracked: bool):
             yield Path(dirpath) / f
 
 
-def resolve_terms_path() -> Path | None:
-    v = os.environ.get(TERMS_ENV)
-    return Path(v) if v else None
+def resolve_terms_path(arg: str | None) -> Path:
+    if arg:
+        return Path(arg)
+    if os.environ.get(TERMS_ENV):
+        return Path(os.environ[TERMS_ENV])
+    return DEFAULT_TERMS
 
 
 def _inside(child: Path, parent: Path) -> bool:
@@ -435,13 +495,14 @@ def _inside(child: Path, parent: Path) -> bool:
 
 
 def run(root: Path, terms_path: Path | None, allowlist: Path | None,
-        git_tracked: bool = False) -> list[Hit]:
+        git_tracked: bool = False, dump_mode: bool = False) -> list[Hit]:
     """Scan root. terms_path None = generic patterns only. Raises ConfigError."""
     terms: list[Term] = []
+    EXTRA_NAME_GLOBS.clear(); EXTRA_DIRS.clear(); EXTRA_PATH_GLOBS.clear()
     if terms_path is not None:
         if not terms_path.is_file():
             raise ConfigError(f"private term list not found: {terms_path} "
-                              f"(check the {TERMS_ENV} environment variable)")
+                              f"(set {TERMS_ENV}, pass --terms, or use --no-private)")
         if _inside(terms_path, root):
             raise ConfigError("the private term list must live outside the scanned folder")
         terms = load_terms(terms_path)
@@ -453,7 +514,7 @@ def run(root: Path, terms_path: Path | None, allowlist: Path | None,
     hits: list[Hit] = []
     for p in iter_files(root, git_tracked):
         if p.is_file():
-            scan_file(root, p, terms, allow, hits)
+            scan_file(root, p, terms, allow, hits, dump_mode)
     return hits
 
 
@@ -461,20 +522,75 @@ class ConfigError(Exception):
     pass
 
 
+def extract_pushed_blobs(dest: Path, revargs: list[str]) -> int:
+    """For the pre-push hook: write every blob ADDED or CHANGED by the commits `git log <revargs>` lists
+    to dest/c<N>/<original path>, so each can be scanned strictly under its own name, including a file added
+    and deleted again inside one push. Any odd path or git error stops with exit 2 (fail closed)."""
+    out = subprocess.run(["git", "log", "--raw", "-z", "--no-abbrev", "--no-renames", "--diff-filter=AMT",
+                          "--format=", *revargs], capture_output=True)
+    if out.returncode != 0:
+        print("leakcheck: git log failed", file=sys.stderr)
+        return 2
+    tok = out.stdout.split(b"\0")
+    seen, n, i = set(), 0, 0
+    while i < len(tok):
+        t = tok[i]
+        if not t.startswith(b":"):
+            i += 1
+            continue
+        meta = t[1:].split()
+        name = tok[i + 1].decode("utf-8", errors="strict") if i + 1 < len(tok) else ""
+        i += 2
+        if len(meta) < 5 or not name:
+            print("leakcheck: unexpected git output", file=sys.stderr)
+            return 2
+        mode, sha = meta[1].decode(), meta[3].decode()
+        if mode == "160000" or set(sha) == {"0"}:        # submodule pointer / deletion
+            continue
+        parts = name.split("/")
+        if any(p in ("", ".", "..") or "\\" in p or ":" in p for p in parts):
+            print("leakcheck: unsafe path in a pushed commit", file=sys.stderr)
+            return 2
+        if (sha, name) in seen:
+            continue
+        seen.add((sha, name))
+        blob = subprocess.run(["git", "cat-file", "blob", sha], capture_output=True)
+        if blob.returncode != 0:
+            print("leakcheck: cannot read a pushed blob", file=sys.stderr)
+            return 2
+        n += 1
+        target = dest / f"c{n}" / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(blob.stdout)
+    return 0
+
+
 def main(argv=None) -> int:
+    av = sys.argv[1:] if argv is None else list(argv)
+    if av and av[0] == "--extract-blobs":
+        if len(av) < 4 or av[2] != "--":
+            print("usage: leakcheck.py --extract-blobs DEST -- <git log revision args>", file=sys.stderr)
+            return 2
+        return extract_pushed_blobs(Path(av[1]), av[3:])
     ap = argparse.ArgumentParser(description="Scan a folder for private data before publishing.")
     ap.add_argument("root", nargs="?", default=".", help="folder to scan (default .)")
+    ap.add_argument("--terms", help=f"private term list (default ${TERMS_ENV} or {DEFAULT_TERMS})")
+    ap.add_argument("--no-private", action="store_true",
+                    help="generic patterns only (CI; the private list never leaves this PC)")
     ap.add_argument("--allowlist", help=f"path allowlist (default <root>/{ALLOWLIST_NAME} if present)")
     ap.add_argument("--no-allowlist", action="store_true", help="ignore any allowlist file")
     ap.add_argument("--git-tracked", action="store_true", help="scan only files tracked by git")
+    ap.add_argument("--dump-mode", action="store_true",
+                    help="ONLY for a text dump of git patches: NUL bytes are scanned (full text, NUL-stripped "
+                         "and printable-string views) instead of refused")
     ap.add_argument("--summary", action="store_true", help="print hit counts per category only")
-    a = ap.parse_args(argv)
+    a = ap.parse_args(av)
 
     root = Path(a.root)
     if not root.is_dir():
         print(f"leakcheck: not a folder: {root}", file=sys.stderr)
         return 2
-    terms_path = resolve_terms_path()
+    terms_path = None if a.no_private else resolve_terms_path(a.terms)
     allowlist = None
     if not a.no_allowlist:
         if a.allowlist:
@@ -482,7 +598,7 @@ def main(argv=None) -> int:
         elif (root / ALLOWLIST_NAME).is_file():
             allowlist = root / ALLOWLIST_NAME
     try:
-        hits = run(root, terms_path, allowlist, a.git_tracked)
+        hits = run(root, terms_path, allowlist, a.git_tracked, a.dump_mode)
     except ConfigError as e:
         print(f"leakcheck: {e}", file=sys.stderr)
         return 2
@@ -495,7 +611,7 @@ def main(argv=None) -> int:
     else:
         for h in hits:
             print(h)
-    mode = "generic only" if terms_path is None else "generic + terms from LEAKCHECK_TERMS"
+    mode = "generic only" if terms_path is None else "generic + private terms"
     print(f"leakcheck: {len(hits)} hit(s) ({mode})", file=sys.stderr)
     return 1 if hits else 0
 

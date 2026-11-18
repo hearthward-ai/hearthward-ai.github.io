@@ -1,4 +1,4 @@
-﻿name: CI
+name: CI
 on:
   pull_request:
   push:
@@ -20,10 +20,10 @@ jobs:
         with: {persist-credentials: false}
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with: {python-version: "3.12"}
-      - name: Install brotli (lets the leak scan read the self-hosted .woff2 fonts; official Google package, version pinned)
-        run: python -m pip install --disable-pip-version-check --no-input brotli==1.2.1
+      - name: Install fonttools + brotli (lets the leak scan read the self-hosted .woff2 fonts; versions pinned)
+        run: python -m pip install --disable-pip-version-check --no-input brotli==1.2.1 fonttools==4.66.0
       - name: Leak scan, generic patterns only
-        run: python -E -P -B tools/leakcheck.py . --no-allowlist --git-tracked
+        run: python -E -P -B tools/leakcheck.py . --no-private --no-allowlist --git-tracked
       - name: Local structure check (broken local links, missing alt, CDN/script pins, banned words)
         run: python -E -P -B tools/sitecheck.py .
       - name: Link check (internal only on PRs; the weekly run also checks external links)
