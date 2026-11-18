@@ -3,7 +3,9 @@
   --font-body:"HW Sans Body",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --font-body-zh:"HW Sans Body","HW Han Body","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif;
   --head:Bitter,Georgia,serif;--mono:ui-monospace,Consolas,Menlo,monospace;--body:var(--font-body)}
-@media (prefers-color-scheme:dark){:root{--bg:#241A15;--band:#2E221B;--hero:#2B1F18;--fg:#F6E9D8;--muted:#CDB9A4;--accent:#F2B544;--accent-fg:#241A15;--card:#3A2A20;--line:#4F3B2F;--code:#1B130F;--note:#3A2B17;--noteline:#A9782E;--foot:#1C140F;--tline:#B58A4E}}
+html{color-scheme:light}
+/* dark mode: only when the visitor picks it (toggle in the header); default is light */
+html[data-theme=dark]{color-scheme:dark;--bg:#151B23;--band:#1B232D;--hero:#18202A;--fg:#EAEFF4;--muted:#B5C1CD;--accent:#F2B544;--accent-fg:#151B23;--card:#232D39;--line:#3A4859;--code:#0F141A;--note:#273240;--noteline:#C98F3B;--foot:#10151B;--tline:#8596A8}
 @font-face{font-family:"HW Sans Body";font-weight:200 900;font-style:normal;font-display:swap;src:url(fonts/hw-sans-body-vf.woff2) format("woff2")}
 @font-face{font-family:Bitter;font-weight:600;font-style:normal;font-display:swap;src:url(fonts/bitter-600-latin.woff2) format("woff2")}
 @font-face{font-family:"HW Han Body";font-weight:400 500;font-style:normal;font-display:swap;src:url(fonts/hw-han-body-450.woff2) format("woff2")}
@@ -64,7 +66,7 @@ footer{background:var(--foot);border-top:1px solid var(--line);margin-top:0;padd
 footer p{margin:.3rem 0;max-width:80ch}
 
 /* language slider: EN | 中文 (a real link; knob slides on click, CSS-only fallback on :active) */
-.langsw{position:relative;display:grid;grid-template-columns:1fr 1fr;width:116px;height:44px;margin:0 0 14px auto;padding:3px;border:1px solid var(--tline);border-radius:999px;background:var(--card);font-size:.95rem;font-weight:700;line-height:1}
+.langsw{position:relative;display:grid;grid-template-columns:1fr 1fr;width:116px;height:44px;margin:0;padding:3px;border:1px solid var(--tline);border-radius:999px;background:var(--card);font-size:.95rem;font-weight:700;line-height:1}
 .langsw>a[lang=en]{font-weight:500}
 .langsw>a{cursor:pointer}
 .langsw::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--accent);transition:transform .22s cubic-bezier(.4,0,.2,1)}
@@ -85,7 +87,22 @@ footer p{margin:.3rem 0;max-width:80ch}
   .langsw>a:focus-visible{outline:0}
   .langsw:has(a:focus-visible){outline:3px solid var(--accent);outline-offset:3px}
 }
-@media (min-width:700px){.langsw{position:absolute;top:0;right:24px;margin:0}}
+.tools{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin:0 0 14px}
+@media (min-width:700px){.tools{position:absolute;top:0;right:24px;margin:0}}
+.logo-dark,html[data-theme=dark] .logo-light{display:none}
+html[data-theme=dark] .logo-dark{display:block}
+/* light/dark toggle: hidden without JS (no JS = light mode); same pill look as the language slider */
+.themesw{display:none;position:relative;grid-template-columns:1fr 1fr;width:88px;height:44px;margin:0;padding:3px;border:1px solid var(--tline);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer;font:inherit}
+.js .themesw{display:grid}
+.themesw::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--accent);transition:transform .22s cubic-bezier(.4,0,.2,1)}
+html[data-theme=dark] .themesw::before{transform:translateX(100%)}
+.themesw svg{position:relative;z-index:1;place-self:center;transition:color .22s}
+.themesw .sun{color:var(--accent-fg)}
+.themesw .moon{color:var(--fg)}
+html[data-theme=dark] .themesw .sun{color:var(--fg)}
+html[data-theme=dark] .themesw .moon{color:var(--accent-fg)}
+.themesw:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.themesw::before,.themesw svg{transition:none}}
 @media (prefers-reduced-motion:reduce){.langsw::before,.langsw>*{transition:none}}
 @media (max-width:599px){main>section{padding:34px 0}}
 /* zh headings: Han = Noto Sans SC Regular 400 ("HW Han Head"); Latin runs = Source Sans 3 at the same weight */
@@ -110,7 +127,7 @@ main .wrap>.flow{grid-column:1/-1;max-width:none}
 .flow .b.guard,.flow .b.knock{stroke-width:2.5;stroke-dasharray:7 5}
 .flow .b.guard{stroke:var(--accent)}
 .flow .b.knock{stroke:#BF4E18}
-@media (prefers-color-scheme:dark){.flow .b.knock{stroke:var(--flame)}}
+html[data-theme=dark] .flow .b.knock{stroke:var(--flame)}
 .flow .t{fill:var(--fg);font-size:19px;font-weight:700}
 .flow .s{fill:var(--muted);font-size:15px}
 .flow .hw-h .t{font-size:21px}

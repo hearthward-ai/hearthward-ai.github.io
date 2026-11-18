@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
 <title>Hearthward 煦坞：你自己的全天候 AI 助手（早期阶段）</title>
 <meta name="description" content="Hearthward（煦坞）：一个免费、注重隐私的私人 AI 助手，正在开发中，设计为在你自己的电脑上用本地模型全天候运行，并带有旨在降低外部内容操控助手的风险的防护层。">
 <meta property="og:locale" content="zh_CN">
@@ -18,8 +17,8 @@
 <meta property="og:image:alt" content="Hearthward 煦坞 标志">
 <meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#241A15" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6E9D8">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#151B23'}}catch(e){}})();</script>
 <link rel="canonical" href="https://hearthward.ai/zh/">
 <link rel="alternate" hreflang="en" href="https://hearthward.ai/">
 <link rel="alternate" hreflang="zh-Hans" href="https://hearthward.ai/zh/">
@@ -37,11 +36,12 @@
 <a class="skip" href="#what">跳到正文</a>
 <header>
 <div class="wrap">
+  <div class="tools">
+  <button type="button" class="themesw" aria-pressed="false" aria-label="深色模式"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
   <div class="langsw on-zh" role="group" aria-label="语言"><a href="../index.html" hreflang="en" lang="en" aria-label="EN (English)">EN</a><span aria-current="page" lang="zh-Hans">中文<span class="sr">（当前语言：中文）</span></span></div>
-  <a href="index.html"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../brand/hearthward-lockup-bilingual-dark-2x.png">
-    <img class="logo" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞，返回首页" width="289" height="64">
-  </picture></a>
+  </div>
+  <a href="index.html"><img class="logo logo-light" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞，返回首页" width="289" height="64">
+  <img class="logo logo-dark" src="../brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="289" height="64" loading="lazy"></a>
   <h1><span class="nb">你自己的全天候 AI 助手，</span><span class="nb">目标是在你自己的电脑上</span><span class="nb">私密运行。</span></h1>
   <p class="status" role="status">早期阶段：开发中，暂不可下载。</p>
   <p class="tagline">提醒、截止日期和邮件草稿，都在你自己的电脑上。</p>
@@ -169,5 +169,6 @@
 </div>
 </footer>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#151B23':'#F6E9D8'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
 </body>
 </html>

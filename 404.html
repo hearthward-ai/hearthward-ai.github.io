@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
 <meta name="robots" content="noindex">
 <title>Page not found | Hearthward</title>
-<meta name="theme-color" content="#F6E9D8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#241A15" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6E9D8">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#151B23'}}catch(e){}})();</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -16,10 +15,11 @@
 <body>
 <header>
 <div class="wrap">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="/brand/hearthward-lockup-bilingual-dark-2x.png">
-    <img class="logo" src="/brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞" width="289" height="64">
-  </picture>
+  <div class="tools">
+  <button type="button" class="themesw" aria-pressed="false" aria-label="Dark mode"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
+  </div>
+  <img class="logo logo-light" src="/brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞" width="289" height="64">
+  <img class="logo logo-dark" src="/brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="289" height="64" loading="lazy">
   <h1>This page isn't here.</h1>
 </div>
 </header>
@@ -37,5 +37,6 @@
   <p>Hearthward is a personal hobby project, provided as-is. &copy; TonyC115</p>
 </div>
 </footer>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#151B23':'#F6E9D8'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
 </body>
 </html>
