@@ -1,0 +1,58 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "40 5 * * 1"      # weekly: catches external links that die on their own
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with: {python-version: "3.12"}
+      - name: Install brotli (lets the leak scan read the self-hosted .woff2 fonts; official Google package, version pinned)
+        run: python -m pip install --disable-pip-version-check --no-input brotli==1.2.1
+      - name: Leak scan, generic patterns only
+        run: python -I -B tools/leakcheck.py . --no-allowlist --git-tracked
+      - name: Local structure check (broken local links, missing alt, CDN/script pins, banned words)
+        run: python -I -B tools/sitecheck.py .
+      - name: Link check (internal only on PRs; the weekly run also checks external links)
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: >-
+            --no-progress --include-fragments
+            ${{ github.event_name != 'schedule' && '--offline' || '' }}
+            --root-dir ${{ github.workspace }} '**/*.html'
+          fail: true
+        # lychee-action's token input defaults to the job's read-only github.token (contents: read); no other secret exists
+  dependency-review:
+    name: dependency review (PRs only)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: {persist-credentials: false}
+      - uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
+        with:
+          fail-on-severity: moderate
+          comment-summary-in-pr: never
+  ci-ok:
+    name: ci-ok
+    if: always()
+    needs: [checks, dependency-review]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - run: '[ "${{ needs.checks.result }}" = success ] && { [ "${{ needs.dependency-review.result }}" = success ] || [ "${{ needs.dependency-review.result }}" = skipped ]; }'
+# Pages itself deploys from the main branch ("Deploy from a branch"), so no deploy workflow, no pages: write.
