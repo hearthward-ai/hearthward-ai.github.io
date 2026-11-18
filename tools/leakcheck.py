@@ -45,7 +45,7 @@ REFUSE_NAME_GLOBS = ["state.db*", ".env.*", "*.pyc", "*.pyo", "*.pem", "*.key",
                      "*.p12", "*.pfx", "*.kdbx", "*.sqlite", "*.sqlite3", "*.db",
                      "*.db-wal", "*.db-shm", "*.log",
                      "*.sqlite*", "*.sqlite3*", "*.db-journal", "*.bak-*"]
-REFUSE_DIRS = {"sessions", "memories", "logs", "__pycache__"}
+REFUSE_DIRS = {"sessions", "memories", "logs", "__pycache__", "downloads", "private"}
 REFUSE_PATH_GLOBS: list[str] = []
 # More refusals (file-name globs, directory names, path globs) live in the PRIVATE term file, sections
 # [refuse-glob], [refuse-dir] and [refuse-path], so this public file names nothing private.
@@ -173,6 +173,9 @@ def load_terms(path: Path) -> list[Term]:
         if line.startswith("[") and line.endswith("]"):
             category = line[1:-1].strip() or "private"
             continue
+        if category.startswith("refuse") and category not in ("refuse-glob", "refuse-dir", "refuse-path"):
+            raise ConfigError(f"unknown section [{category}] in the private term list "
+                              f"(known refusal sections: refuse-glob, refuse-dir, refuse-path)")
         if category == "refuse-glob":
             EXTRA_NAME_GLOBS.append(line.lower()); continue
         if category == "refuse-dir":
@@ -223,12 +226,28 @@ def is_site_font(rel: str) -> bool:
     return Path(parts[-1]).suffix in FONT_EXT and "fonts" in parts[:-1]
 
 
+FONT_TABLES_OK = {"cmap", "glyf", "loca", "head", "hhea", "hmtx", "maxp", "name", "OS/2", "post", "GSUB",
+                  "GPOS", "GDEF", "BASE", "kern", "gasp", "prep", "fpgm", "cvt ", "CFF ", "CFF2", "VORG", "vhea",
+                  "vmtx", "fvar", "gvar", "avar", "STAT", "HVAR", "MVAR", "VVAR", "meta", "DSIG"}
+FONT_TABLES_STRINGS = {"post", "STAT", "gasp", "OS/2", "head", "hhea", "maxp", "BASE", "GDEF", "GPOS", "GSUB",
+                       "fvar", "avar", "HVAR", "MVAR", "VVAR", "meta", "DSIG", "name"}
+
+
 def font_strings(path: Path) -> list[tuple[str, str]]:
-    """(label, text) for every name-table record and any meta-table text."""
+    """(label, text) for every name-table record, any meta-table text, and the printable strings of the other
+    non-glyph tables. A table that is not in FONT_TABLES_OK makes the font unreadable (refused)."""
     from fontTools.ttLib import TTFont          # ImportError -> caller reports a hit
     out = []
     f = TTFont(str(path), lazy=False)
     try:
+        bad = sorted(set(f.reader.tables) - FONT_TABLES_OK)
+        if bad:
+            raise ValueError("unknown font table")
+        for tag in sorted(set(f.reader.tables) & FONT_TABLES_STRINGS):
+            raw = f.reader[tag]
+            for k, st in enumerate(binary_strings(raw)):
+                out.append((f"table-{tag.strip()}", st))
+
         for r in f["name"].names:
             try:
                 txt = r.toUnicode()
@@ -254,7 +273,10 @@ def refused_reason(rel: str) -> str | None:
             return f"refused-dir:{d}"
     if low in REFUSE_NAMES:
         return "refused-file"
-    if any(fnmatch.fnmatch(rel.lower(), g) for g in REFUSE_PATH_GLOBS + EXTRA_PATH_GLOBS):
+    cands = [rel.lower()]
+    if re.match(r"c\d+/", rel):                      # blob folders of the pre-push hook: c<N>/<original path>
+        cands.append(rel.split("/", 1)[1].lower())
+    if any(fnmatch.fnmatch(c, g) for c in cands for g in REFUSE_PATH_GLOBS + EXTRA_PATH_GLOBS):
         return "refused-file"
     if any(fnmatch.fnmatch(low, g) for g in REFUSE_NAME_GLOBS + EXTRA_NAME_GLOBS):
         return "refused-file"
@@ -272,6 +294,41 @@ def refused_reason(rel: str) -> str | None:
 PNG_SIG = b"\x89PNG\r\n\x1a\n"
 PNG_KEEP = {b"IHDR", b"PLTE", b"IDAT", b"IEND", b"tRNS", b"gAMA", b"cHRM",
             b"sRGB", b"pHYs", b"sBIT", b"bKGD"}
+
+
+def png_trailing(data: bytes) -> bool:
+    """True when bytes follow IEND (a polyglot) or IEND is missing."""
+    i = 8
+    while i + 8 <= len(data):
+        length, ctype = struct.unpack(">I4s", data[i:i + 8])
+        i += 12 + length
+        if ctype == b"IEND":
+            return i != len(data)
+    return True
+
+
+def jpeg_tail_problems(rest: bytes) -> list[str]:
+    """Walk the data after the first SOS marker: EOI must be the last two bytes, and no APPn/COM may follow."""
+    found, i = [], 0
+    while i + 1 < len(rest):
+        if rest[i] != 0xFF:
+            i += 1
+            continue
+        m = rest[i + 1]
+        if m in (0x00, 0xFF) or 0xD0 <= m <= 0xD7 or m == 0x01:
+            i += 2 if m != 0xFF else 1
+            continue
+        if m == 0xD9:
+            if i + 2 != len(rest):
+                found.append("trailing-bytes")
+            return found
+        if i + 4 > len(rest):
+            break
+        if 0xE1 <= m <= 0xEF or m == 0xFE:
+            found.append("COM" if m == 0xFE else f"APP{m - 0xE0}-after-scan")
+        i += 2 + struct.unpack(">H", rest[i + 2:i + 4])[0]
+    found.append("no-EOI")
+    return found
 
 
 def png_chunks(data: bytes):
@@ -326,12 +383,19 @@ def image_metadata(path: Path) -> list[str]:
     """Return metadata block names still present (empty list = clean)."""
     data = path.read_bytes()
     suf = path.suffix.lower()
+    if b"PK\x03\x04" in data or b"PK\x05\x06" in data:
+        return ["embedded-zip"]
     if suf == ".png":
-        return sorted({c.decode("latin-1") for c, _ in png_chunks(data) if c not in PNG_KEEP})
+        found = {c.decode("latin-1") for c, _ in png_chunks(data) if c not in PNG_KEEP}
+        if png_trailing(data):
+            found.add("trailing-bytes")
+        return sorted(found)
     found = []
     for marker, seg in jpeg_segments(data):
         if not _jpeg_keep(marker, seg):
             found.append("COM" if marker == 0xFE else f"APP{marker - 0xE0}")
+        if marker is None:
+            found += jpeg_tail_problems(seg)
     return sorted(set(found))
 
 
@@ -388,7 +452,7 @@ def binary_strings(data: bytes) -> list[str]:
 
 
 def magic_reason(head: bytes) -> str | None:
-    if head.startswith(SQLITE_MAGIC):                # a renamed database (e.g. a shelf saved as .txt)
+    if head.startswith(SQLITE_MAGIC):                # a renamed database (e.g. a database saved as .txt)
         return "refused-sqlite"
     if any(head.startswith(m) for m in MAGIC_REFUSE) or _BZ2_RE.match(head) \
             or head[257:262] == b"ustar":
@@ -426,6 +490,9 @@ def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit], dump_mode: 
         return
     suf = path.suffix.lower()
     if is_site_font(rel) and not dump_mode:
+        if b"PK\x03\x04" in data or b"PK\x05\x06" in data:
+            hits.append(Hit(rel, 0, 0, "font-unreadable", "embedded-zip"))
+            return
         try:
             strings = font_strings(path)
         except Exception as e:                       # incl. missing fontTools/brotli
@@ -447,11 +514,7 @@ def scan_file(root: Path, path: Path, terms, allow, hits: list[Hit], dump_mode: 
         views = [data.decode("utf-8", errors="replace"),                         # full text
                  data.replace(b"\x00", b"").decode("utf-8", errors="replace"),    # NUL-split, UTF-16/32 ASCII
                  "\n".join(binary_strings(data))]                                # printable runs
-    elif data[:2] in (b"\xff\xfe", b"\xfe\xff"):
-        # a BOM'd file: scan it as UTF-16 AND as raw bytes without NULs, so the BOM cannot hide ASCII text
-        views = [data.decode("utf-16", errors="replace"),
-                 data.replace(b"\x00", b"").decode("utf-8", errors="replace")]
-    elif b"\x00" in data:                            # whole file, not just the first 8 KB
+    elif b"\x00" in data or data[:2] in (b"\xff\xfe", b"\xfe\xff"):   # incl. UTF-16: re-save as UTF-8                            # whole file, not just the first 8 KB
         hits.append(Hit(rel, 0, 0, "refused-binary"))
         return
     else:
@@ -506,6 +569,8 @@ def run(root: Path, terms_path: Path | None, allowlist: Path | None,
         if _inside(terms_path, root):
             raise ConfigError("the private term list must live outside the scanned folder")
         terms = load_terms(terms_path)
+        if not terms:
+            raise ConfigError("the private term list holds no terms (only refusal rules or nothing)")
     allow = None
     if allowlist is not None:
         if not allowlist.is_file():
@@ -522,12 +587,23 @@ class ConfigError(Exception):
     pass
 
 
+_WIN_RESERVED = re.compile(r"(?i)^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$")
+
+
+def _unsafe_part(p: str) -> bool:
+    """A path part Windows would treat as a device, strip, or reject."""
+    return bool(_WIN_RESERVED.match(p) or p.endswith((".", " ")) or any(c in p for c in '<>"|?*')
+                or any(ord(c) < 32 for c in p))
+
+
 def extract_pushed_blobs(dest: Path, revargs: list[str]) -> int:
     """For the pre-push hook: write every blob ADDED or CHANGED by the commits `git log <revargs>` lists
     to dest/c<N>/<original path>, so each can be scanned strictly under its own name, including a file added
     and deleted again inside one push. Any odd path or git error stops with exit 2 (fail closed)."""
-    out = subprocess.run(["git", "log", "--raw", "-z", "--no-abbrev", "--no-renames", "--diff-filter=AMT",
-                          "--format=", *revargs], capture_output=True)
+    env = {**os.environ, "GIT_NO_REPLACE_OBJECTS": "1"}          # a local `git replace` must not hide a blob
+    out = subprocess.run(["git", "--no-replace-objects", "log", "--raw", "-z", "--no-abbrev", "--no-renames",
+                          "--diff-merges=separate", "--diff-filter=AMT", "--format=", *revargs],
+                         capture_output=True, env=env)
     if out.returncode != 0:
         print("leakcheck: git log failed", file=sys.stderr)
         return 2
@@ -548,13 +624,13 @@ def extract_pushed_blobs(dest: Path, revargs: list[str]) -> int:
         if mode == "160000" or set(sha) == {"0"}:        # submodule pointer / deletion
             continue
         parts = name.split("/")
-        if any(p in ("", ".", "..") or "\\" in p or ":" in p for p in parts):
+        if any(p in ("", ".", "..") or "\\" in p or ":" in p or _unsafe_part(p) for p in parts):
             print("leakcheck: unsafe path in a pushed commit", file=sys.stderr)
             return 2
         if (sha, name) in seen:
             continue
         seen.add((sha, name))
-        blob = subprocess.run(["git", "cat-file", "blob", sha], capture_output=True)
+        blob = subprocess.run(["git", "--no-replace-objects", "cat-file", "blob", sha], capture_output=True, env=env)
         if blob.returncode != 0:
             print("leakcheck: cannot read a pushed blob", file=sys.stderr)
             return 2
@@ -562,6 +638,9 @@ def extract_pushed_blobs(dest: Path, revargs: list[str]) -> int:
         target = dest / f"c{n}" / name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(blob.stdout)
+        if not target.is_file() or target.stat().st_size != len(blob.stdout):   # e.g. a device name
+            print("leakcheck: a pushed blob was not written out intact", file=sys.stderr)
+            return 2
     return 0
 
 
