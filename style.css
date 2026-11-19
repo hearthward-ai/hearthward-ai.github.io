@@ -1,4 +1,4 @@
-:root{--bg:#F8ECD3;--band:#F0DFBC;--hero:#F4E5C7;--fg:#3B2A22;--muted:#654F42;--accent:#A33F0F;--accent-fg:#fff;--flame:#E8743B;--card:#FFF6E4;--line:#DFCBA4;--code:#E9D3AA;--code-fg:#33231C;--code-line:#B28F58;--note:#FBE4B8;--noteline:#C98A2E;--foot:#EBDAB6;--tline:#8F6728;--bar:#FAEFD9;--tint:#FCE5D2;--tint-line:#D99A72;--tint-muted:#6A4C3E;
+:root{--bg:#F8ECD3;--band:#F0DFBC;--hero:#F4E5C7;--fg:#3B2A22;--muted:#654F42;--accent:#A33F0F;--accent-fg:#fff;--flame:#E8743B;--card:#FFF6E4;--line:#DFCBA4;--code:#E9D3AA;--code-fg:#33231C;--code-line:#B28F58;--note:#FBE4B8;--noteline:#C98A2E;--foot:#EBDAB6;--tline:#8F6728;--bar:#FAEFD9;--tint:#F6D7AE;--tint-line:#C98A45;--tint-muted:#6A4C3E;
   /* Fonts: the files in fonts/ are subsets of the full fonts. Rebuild them after any text edit on the pages. */
   --font-body:"HW Sans Body",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --font-body-zh:"HW Sans Body","HW Han Body","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif;
