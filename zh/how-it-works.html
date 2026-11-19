@@ -46,7 +46,7 @@
 <header>
 <div class="wrap">
   <h1>防护层如何工作</h1>
-  <p class="tagline">详细介绍 Threshold、Knock 和 Gatehouse。以下是计划中的设计，防护层仍在开发中。</p>
+  <p class="tagline">详细介绍 Threshold、Knock 和 Gatehouse。防护层还处在早期，仍在开发中。本页描述的是预期的设计，已公开的代码可能与之有出入。</p>
   <p class="tagline note">本页是英文版的中文译文，如有出入，以<a href="../how-it-works.html">英文版</a>为准。</p>
   <nav aria-label="页面栏目">
     <a href="index.html">首页</a>
@@ -63,7 +63,7 @@
 <div class="wrap">
     <h2>一分钟了解思路</h2>
     <p>助手读取外部内容（聊天消息、邮件、附件、网页、工具输出）时，可能被藏在其中的指令欺骗，这叫提示词注入。Hearthward 并不试图让模型免疫，而是在模型外面加一层防护，做三件事：检查进来的内容，限制助手可以做的事，检查发出去的内容。</p>
-    <p>示意图在<a href="index.html#how">首页</a>。防护层计划做成 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）的插件（可以添加到它上面的附加程序）。以下内容是设计和目前的进展，不是成品。防护层代码、测试和攻击测试工具已作为早期、尽力而为的版本公开：<a href="https://github.com/hearthward-ai/hearthward-guard">阅读代码</a>。完整的助手尚未发布。</p>
+    <p>示意图在<a href="index.html#how">首页</a>。防护层是作为 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）的插件构建的（可以添加到它上面的附加程序）。以下内容是设计和目前的进展，不是成品。防护层代码、测试和攻击测试工具已作为早期、尽力而为的版本公开：<a href="https://github.com/hearthward-ai/hearthward-guard">阅读代码</a>。完整的助手尚未发布。</p>
   </div>
 </section>
   <section id="threshold">
@@ -116,7 +116,7 @@
 
 <footer>
 <div class="wrap">
-  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a>（<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>） · &copy; TonyC115</p>
+  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码（GitHub）</a>（<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>） · &copy; TonyC115</p>
 </div>
 </footer>
 <div class="backdrop" aria-hidden="true"></div>
