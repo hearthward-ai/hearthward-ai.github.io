@@ -75,7 +75,7 @@
       <li>晚上：起草一封邮件，由你先看过、批准后才发出。</li>
     </ul>
     <p>你的数据留在你自己的电脑上，模型也在本地运行。发送邮件或使用聊天应用这类功能，需要通过你选用的服务把消息发出去，该服务也能看到这条消息。</p>
-    <p>计划免费使用。你需要一台配有较新显卡的高性能电脑（具体要求会在发布时说明）。</p>
+    <p>计划免费使用。你需要一台配有较新显卡的高性能电脑（具体要求会在助手发布时说明）。</p>
     <p>它基于 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）构建，这是一个用于运行 AI 助手的开源工具。</p>
     <p>这是 Tony（GitHub：TonyC115）独自开发的个人工程项目，他是一名大学生。它不是产品，也不是公司，目前还不能注册或使用。</p>
   </div>
@@ -99,7 +99,7 @@
   <section id="guard">
 <div class="wrap">
     <h2>针对外部内容的防护层</h2>
-    <p>助手要读网页、邮件和消息，就可能被藏在里面的指令骗到（这叫提示词注入）。Hearthward 带有一个防护层，会尽量识别藏在这些文字里的有害指令，并限制它们起作用。它能降低风险，但不能消除风险。它是辅助功能，目的是让助手更适合放心地一直运行。这是计划中的设计，防护层仍在开发中。它由三部分组成：</p>
+    <p>助手要读网页、邮件和消息，就可能被藏在里面的指令骗到（这叫提示词注入）。Hearthward 带有一个防护层，会尽量识别藏在这些文字里的有害指令，并限制它们起作用。它能降低风险，但不能消除风险。它是辅助功能，目的是让助手更适合放心地一直运行。防护层代码已作为早期、尽力而为的版本公开：<a href="https://github.com/hearthward-ai/hearthward-guard">在 GitHub 上阅读代码</a>。它仍在开发中。它由三部分组成：</p>
     <div class="cards">
       <div class="card">
         <h3>Threshold（门槛）</h3>
@@ -134,7 +134,7 @@
   <section id="status">
 <div class="wrap">
     <h2>进展</h2>
-    <p>Hearthward 还处在早期开发阶段，尚未发布。其中一部分正在非公开开发和测试。本页所述的一切都只是计划。目前没有下载。数据如何处理，请见<a href="privacy.html">隐私政策</a>。</p>
+    <p>Hearthward 还处在早期开发阶段，助手本身尚未发布。防护层代码已作为早期、尽力而为的版本在 GitHub 上公开；其余部分正在非公开开发和测试。本页所述的其他内容仍只是计划。目前没有可安装的助手。数据如何处理，请见<a href="privacy.html">隐私政策</a>。</p>
     <h3>计划中</h3>
     <ul>
       <li>在聊天应用里和它对话（先从 Discord 开始）</li>
@@ -142,9 +142,9 @@
       <li>发送邮件：只发给你批准过的收件人，并且要在你同意之后</li>
       <li>通过防护层读取你的收件箱（这需要 Google 授予读取邮件的权限，所以尚未实现）</li>
       <li>工作量规划：把任务合理分摊到一周里</li>
-      <li>公开代码（含防护层和测试），等有了完整、测试过的版本再发布</li>
+      <li>公开助手的其余代码，等有了完整、测试过的版本再发布</li>
     </ul>
-    <p>代码公开后，本页会放上链接。目前可以在 <a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a> 关注进展。</p>
+    <p>防护层代码、测试和攻击测试工具已在 <a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a> 公开（Apache-2.0，早期、尽力而为）；完整的助手尚未公开。可以在 <a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a> 关注进展。</p>
   </div>
 </section>
 
@@ -167,7 +167,7 @@
 <footer>
 <div class="wrap">
   <p>Hearthward 是个人工程项目，按“现状”提供。本站内容不构成财务、法律、医疗或其他专业建议。请参阅<a href="disclaimer.html">免责声明</a>。</p>
-  <p><a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · 代码许可：Apache-2.0（代码发布后适用） · &copy; TonyC115</p>
+  <p><a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a>（<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>） · &copy; TonyC115</p>
 </div>
 </footer>
 <div class="backdrop" aria-hidden="true"></div>
@@ -181,6 +181,7 @@
     <li><a href="privacy.html">隐私政策</a></li>
     <li><a href="disclaimer.html">免责声明</a></li>
     <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a></li>
   </ul></nav>
 </div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>

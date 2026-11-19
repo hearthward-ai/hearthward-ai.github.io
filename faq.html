@@ -46,7 +46,7 @@
 <header>
 <div class="wrap">
   <h1>Frequently asked questions</h1>
-  <p class="tagline">Short, honest answers. Hearthward is in early development and not released.</p>
+  <p class="tagline">Short, honest answers. Hearthward is in early development. The guard code is public as an early, best-effort release; the assistant is not released.</p>
   <nav aria-label="Page sections">
     <a href="index.html">Home</a>
     <a href="#basics">The basics</a>
@@ -63,9 +63,9 @@
     <h3>What is Hearthward?</h3>
     <p>A personal AI assistant designed to run around the clock on your own computer with an open model (one whose files you can download and run yourself). It is meant to remind you of deadlines, keep your schedule and draft emails for you to approve.</p>
     <h3>Can I download it?</h3>
-    <p>Not yet. It is in early development. There is no download, and nobody can sign up. This site will link to the code when it is public.</p>
+    <p>Not the assistant. It is in early development, there is no installable version, and nobody can sign up. The guard code (with its tests and attack test kit) is on GitHub as an early, best-effort release: <a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a>.</p>
     <h3>Is it free?</h3>
-    <p>It is planned to be free to use. You would need a capable PC with a modern graphics card; exact requirements will come with the release.</p>
+    <p>It is planned to be free to use. You would need a capable PC with a modern graphics card; exact requirements will come with a release of the assistant.</p>
     <h3>Do I need Discord?</h3>
     <p>You are meant to talk to it in a chat app, and Discord is planned first.</p>
     <h3>How is this different from ChatGPT or other assistants?</h3>
@@ -97,9 +97,9 @@
     <h3>Who is building it?</h3>
     <p>Tony (GitHub: TonyC115), a university student. It is a personal engineering project, not a product or a company.</p>
     <h3>Is it open source?</h3>
-    <p>The code is planned to be released under the Apache License 2.0 once a complete, tested version is ready. It is built on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a> (Nous Research), which is open source. Hearthward is not affiliated with or endorsed by Nous Research, Google or any model maker.</p>
+    <p>The guard code is published under the Apache License 2.0 at <a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a>, as an early, best-effort release (not audited, not production-ready). The rest of the assistant is planned to follow under the same licence once a complete, tested version is ready. It is built on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a> (Nous Research), which is open source. Hearthward is not affiliated with or endorsed by Nous Research, Google or any model maker.</p>
     <h3>How do I report a security problem?</h3>
-    <p>Please do not post details publicly. Use GitHub&rsquo;s private &ldquo;Report a vulnerability&rdquo; option under the Security tab of the <a href="https://github.com/hearthward-ai/hearthward-ai.github.io">repository</a>, if it is shown there. If it is not shown yet, open a short issue at <a href="https://github.com/hearthward-ai/hearthward-ai.github.io/issues">the repository&rsquo;s issues page</a> asking for a private contact, with no details. See the <a href="privacy.html#contact">privacy policy</a> for the full wording.</p>
+    <p>Please do not post details publicly. For a problem in the guard code (for example a bypass), use GitHub&rsquo;s private &ldquo;Report a vulnerability&rdquo; button on the <a href="https://github.com/hearthward-ai/hearthward-guard/security">Security tab of the guard repository</a>; see its SECURITY.md. For a problem with this website, use the Security tab of the <a href="https://github.com/hearthward-ai/hearthward-ai.github.io">site repository</a>, if it is shown there. If it is not shown yet, open a short issue at <a href="https://github.com/hearthward-ai/hearthward-ai.github.io/issues">the repository&rsquo;s issues page</a> asking for a private contact, with no details. See the <a href="privacy.html#contact">privacy policy</a> for the full wording.</p>
     <h3>What does the name mean?</h3>
     <p>煦坞 (xù wù) means, roughly, a warm, sheltered harbour.</p>
     <h3>Where can I follow progress?</h3>
@@ -110,7 +110,7 @@
 
 <footer>
 <div class="wrap">
-  <p><a href="index.html">Home</a> · <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Code licence: Apache-2.0 (once the code is released) · &copy; TonyC115</p>
+  <p><a href="index.html">Home</a> · <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">Guard code</a> (<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>) · &copy; TonyC115</p>
 </div>
 </footer>
 <div class="backdrop" aria-hidden="true"></div>
@@ -124,6 +124,7 @@
     <li><a href="privacy.html">Privacy policy</a></li>
     <li><a href="disclaimer.html">Disclaimer</a></li>
     <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">Guard code</a></li>
   </ul></nav>
 </div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>

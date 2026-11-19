@@ -46,7 +46,7 @@
 <header>
 <div class="wrap">
   <h1>路线图与开发日志</h1>
-  <p class="tagline">早期阶段。这里的内容都是计划或进展记录，不是发布。</p>
+  <p class="tagline">早期阶段。这里的内容都是计划或进展记录。只有防护层代码已作为早期版本公开。</p>
   <p class="tagline note">本页是英文版的中文译文，如有出入，以<a href="../roadmap.html">英文版</a>为准。</p>
   <nav aria-label="页面栏目">
     <a href="index.html">首页</a>
@@ -70,7 +70,7 @@
     </ul>
     <h3>目前已完成</h3>
     <ul>
-      <li>防护层的第一个可用版本，配有自动化测试和攻击测试工具（尚未公开）</li>
+      <li>防护层的第一个可用版本，配有自动化测试和攻击测试工具，已作为早期、尽力而为的版本公开：<a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a>（Apache-2.0）</li>
       <li>只能发送你已批准邮件的 Gmail 连接，已在非公开环境中构建并测试</li>
       <li>本网站（英文和简体中文）及隐私政策</li>
     </ul>    <h3>进行中</h3>
@@ -82,7 +82,7 @@
     <h3>计划中</h3>
     <ul>
       <li>工作量规划：把任务合理分摊到一周里</li>
-      <li>公开发布代码，包括防护层及其测试，等完整、测试过的版本准备好之后</li>
+      <li>公开发布助手的其余代码，等完整、测试过的版本准备好之后</li>
       <li>随发布提供安装说明和电脑配置要求</li>
     </ul>
     <h3>受阻</h3>
@@ -97,7 +97,7 @@
     <h3>2026-11-18</h3>
     <ul>
       <li>新增防护层工作方式、常见问题和本路线图页面。</li>
-      <li>防护层代码及其测试和攻击测试工具正在为公开发布做准备（尚未公开）。</li>
+      <li>防护层代码、测试和攻击测试工具现已公开：<a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a>。这是早期、尽力而为的版本。</li>
     </ul>
     <h3>2026-11-17</h3>
     <ul>
@@ -120,7 +120,7 @@
 
 <footer>
 <div class="wrap">
-  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · 代码许可：Apache-2.0（代码发布后适用） · &copy; TonyC115</p>
+  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a>（<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>） · &copy; TonyC115</p>
 </div>
 </footer>
 <div class="backdrop" aria-hidden="true"></div>
@@ -134,6 +134,7 @@
     <li><a href="privacy.html">隐私政策</a></li>
     <li><a href="disclaimer.html">免责声明</a></li>
     <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a></li>
   </ul></nav>
 </div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>

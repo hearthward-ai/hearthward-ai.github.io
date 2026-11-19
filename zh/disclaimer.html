@@ -76,7 +76,7 @@
   <section id="warranty">
 <div class="wrap">
     <h2>不作担保</h2>
-    <p>Hearthward、本网站以及其中的任何代码、文字或示例，均按“现状”提供，不作任何明示或暗示的担保，包括适合某一特定用途、运行不出错或随时可用。Hearthward 还处在早期开发阶段，尚未发布；除非另有说明，本站所述的一切都只是计划。在法律允许的最大范围内，作者不对因使用或依赖它而造成的任何损失或损害负责。</p>
+    <p>Hearthward、本网站以及其中的任何代码、文字或示例，均按“现状”提供，不作任何明示或暗示的担保，包括适合某一特定用途、运行不出错或随时可用。Hearthward 还处在早期开发阶段。防护层代码已作为早期、尽力而为的版本公开（<a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a>）；助手整体尚未发布，除非另有说明，本站所述的其他一切仍只是计划。在法律允许的最大范围内，作者不对因使用或依赖它而造成的任何损失或损害负责。</p>
     <p>它是个人工程项目，不是产品、服务或公司。它不是经过认证或审计的安全产品，任何人都不应把它当作安全产品。</p>
   </div>
 </section>
@@ -104,7 +104,7 @@
     <h2>他人的软件、模型和服务</h2>
     <ul>
       <li>Hearthward 基于 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）构建，设计为运行你自己下载的开源模型。它们以及你搭配使用的其他工具和服务，各自有自己的许可证和条款，你需要遵守。</li>
-      <li>计划在完整、测试过的版本准备好之后，以 Apache License 2.0 发布 Hearthward 的代码。该许可证只涵盖代码。名称、中文名和标志不授权用作他人的品牌。</li>
+      <li>防护层代码已以 Apache License 2.0 公开；Hearthward 其余代码计划在完整、测试过的版本准备好之后，以同一许可证发布。该许可证只涵盖代码。名称、中文名和标志不授权用作他人的品牌。</li>
       <li>Hearthward 与 Google、Nous Research（Hermes Agent）或任何模型厂商均无关联，也未获其认可。</li>
     </ul>
   </div>
@@ -130,7 +130,7 @@
 
 <footer>
 <div class="wrap">
-  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · 代码许可：Apache-2.0（代码发布后适用） · &copy; TonyC115</p>
+  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a>（<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>） · &copy; TonyC115</p>
 </div>
 </footer>
 <div class="backdrop" aria-hidden="true"></div>
@@ -144,6 +144,7 @@
     <li><a href="privacy.html">隐私政策</a></li>
     <li><a href="disclaimer.html" aria-current="page">免责声明</a></li>
     <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a></li>
   </ul></nav>
 </div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>

@@ -79,7 +79,7 @@
     <p>Your data stays on your computer, and the model runs locally. Features like sending an email or using a chat
       app necessarily send that message through the service you choose, and that service can see it.</p>
     <p>It is planned to be free to use. You need a capable PC with a modern graphics card (exact requirements will come with
-      the release).</p>
+      the release of the assistant).</p>
     <p>It is built on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a> (Nous Research), an
       open-source tool for running AI assistants.</p>
     <p>It is a personal engineering project by Tony (GitHub: TonyC115), a university student. It is not a product or
@@ -112,8 +112,7 @@
     <p>An assistant that reads web pages, emails and messages can be tricked by instructions hidden in them
       (this is called prompt injection). Hearthward includes a guard that tries to catch and contain harmful
       instructions hidden in that text. It lowers the risk; it cannot remove it. It is a supporting feature, built
-      to make the assistant safe enough to leave running. This is the planned design, and the guard is still in
-      development. It has three parts:</p>
+      to make the assistant safe enough to leave running. The guard code is published as an early, best-effort release: <a href="https://github.com/hearthward-ai/hearthward-guard">read the code on GitHub</a>. It is still in development. It has three parts:</p>
     <div class="cards">
       <div class="card">
         <h3>Threshold</h3>
@@ -151,8 +150,8 @@
   <section id="status">
 <div class="wrap">
     <h2>Status</h2>
-    <p>Hearthward is in early development and is not released. Parts of it are being built and tested privately.
-      Everything described on this page is the plan. There is no download yet. For how data is handled, see the
+    <p>Hearthward is in early development and is not released as an assistant. The guard code is published on GitHub as an early, best-effort release; the rest is being built and tested privately.
+      Everything else described on this page is still a plan. There is no installable assistant yet. For how data is handled, see the
       <a href="privacy.html">privacy policy</a>.</p>
     <h3>Planned</h3>
     <ul>
@@ -161,9 +160,9 @@
       <li>Sending email, only to an approved recipient list and only after you say yes</li>
       <li>Reading your email inbox through the guard (this needs Google's permission to read email, so it is not done yet)</li>
       <li>A workload planner that spreads tasks across the week</li>
-      <li>A public code release with the guard and its tests, once a complete, tested version is ready</li>
+      <li>A public release of the rest of the assistant, once a complete, tested version is ready</li>
     </ul>
-    <p>This page will link to the code when it is public. For now, follow along at
+    <p>The guard code, its tests and the attack test kit are public in <a href="https://github.com/hearthward-ai/hearthward-guard">hearthward-guard</a> (Apache-2.0, early and best-effort). The full assistant is not. Follow along at
       <a href="https://github.com/hearthward-ai">github.com/hearthward-ai</a>.</p>
   </div>
 </section>
@@ -187,7 +186,7 @@
 <footer>
 <div class="wrap">
   <p>Hearthward is a personal engineering project, provided as-is. Nothing here is financial, legal, medical or professional advice. See the <a href="disclaimer.html">disclaimer</a>.</p>
-  <p><a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Code licence: Apache-2.0 (once the code is released) · &copy; TonyC115</p>
+  <p><a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">Guard code</a> (<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>) · &copy; TonyC115</p>
 </div>
 </footer>
 <div class="backdrop" aria-hidden="true"></div>
@@ -201,6 +200,7 @@
     <li><a href="privacy.html">Privacy policy</a></li>
     <li><a href="disclaimer.html">Disclaimer</a></li>
     <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">Guard code</a></li>
   </ul></nav>
 </div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
