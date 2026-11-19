@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Hearthward 煦坞 logo">
 <meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6E9D8">
+<meta name="theme-color" content="#F8ECD3">
 <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#17191C'}}catch(e){}})();</script>
 <link rel="canonical" href="https://hearthward.ai/how-it-works.html">
 <link rel="alternate" hreflang="en" href="https://hearthward.ai/how-it-works.html">
@@ -33,14 +33,18 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header>
-<div class="wrap">
+<div class="topbar">
+<div class="bar-in">
+  <a class="brand" href="index.html"><img class="logo logo-light" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞, home page" width="144" height="32"><img class="logo logo-dark" src="brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
   <div class="tools">
   <button type="button" class="themesw" aria-pressed="false" aria-label="Dark mode"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
   <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN<span class="sr"> (current language: English)</span></span><a href="zh/how-it-works.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="中文 (Simplified Chinese)">中文</a></div>
+  <button type="button" class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="sidenav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
-  <a href="index.html"><img class="logo logo-light" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞, home page" width="289" height="64">
-  <img class="logo logo-dark" src="brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="289" height="64" loading="lazy"></a>
+</div>
+</div>
+<header>
+<div class="wrap">
   <h1>How the guard works</h1>
   <p class="tagline">A closer look at Threshold, Knock and Gatehouse. This is the planned design; the guard is in development.</p>
   <nav aria-label="Page sections">
@@ -111,10 +115,24 @@
 
 <footer>
 <div class="wrap">
-  <p><a href="index.html">Home</a> · <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Code licence: Apache-2.0 (once the code is released) · &copy; TonyC115</p>
+  <p><a href="index.html">Home</a> · <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy policy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · Code licence: Apache-2.0 (once the code is released) · &copy; TonyC115</p>
 </div>
 </footer>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="drawer" id="sidenav" role="dialog" aria-modal="true" aria-labelledby="sn-t" tabindex="-1">
+  <div class="drawer-head"><span class="drawer-title" id="sn-t">Pages</span><button type="button" class="closebtn" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav aria-label="All pages"><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-it-works.html" aria-current="page">How it works</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="privacy.html">Privacy policy</a></li>
+    <li><a href="disclaimer.html">Disclaimer</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+  </ul></nav>
+</div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
-<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F6E9D8'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F8ECD3'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+<script src="menu.js"></script>
 </body>
 </html>

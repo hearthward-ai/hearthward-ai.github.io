@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Hearthward 煦坞 标志">
 <meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6E9D8">
+<meta name="theme-color" content="#F8ECD3">
 <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#17191C'}}catch(e){}})();</script>
 <link rel="canonical" href="https://hearthward.ai/zh/how-it-works.html">
 <link rel="alternate" hreflang="en" href="https://hearthward.ai/how-it-works.html">
@@ -29,19 +29,22 @@
 <link rel="preload" href="../fonts/hw-sans-body-vf.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/hw-han-body-450.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/hw-han-bold-650.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../fonts/hw-han-head-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
-<header>
-<div class="wrap">
+<div class="topbar">
+<div class="bar-in">
+  <a class="brand" href="index.html"><img class="logo logo-light" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞，返回首页" width="144" height="32"><img class="logo logo-dark" src="../brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
   <div class="tools">
   <button type="button" class="themesw" aria-pressed="false" aria-label="深色模式"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
   <div class="langsw on-zh" role="group" aria-label="语言"><a href="../how-it-works.html" hreflang="en" lang="en" aria-label="EN (English)">EN</a><span aria-current="page" lang="zh-Hans">中文<span class="sr">（当前语言：中文）</span></span></div>
+  <button type="button" class="menubtn" aria-label="菜单" aria-expanded="false" aria-controls="sidenav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
-  <a href="index.html"><img class="logo logo-light" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞，返回首页" width="289" height="64">
-  <img class="logo logo-dark" src="../brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="289" height="64" loading="lazy"></a>
+</div>
+</div>
+<header>
+<div class="wrap">
   <h1>防护层如何工作</h1>
   <p class="tagline">详细介绍 Threshold、Knock 和 Gatehouse。以下是计划中的设计，防护层仍在开发中。</p>
   <p class="tagline note">本页是英文版的中文译文，如有出入，以<a href="../how-it-works.html">英文版</a>为准。</p>
@@ -113,10 +116,24 @@
 
 <footer>
 <div class="wrap">
-  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · 代码许可：Apache-2.0（代码发布后适用） · &copy; TonyC115</p>
+  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · 代码许可：Apache-2.0（代码发布后适用） · &copy; TonyC115</p>
 </div>
 </footer>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="drawer" id="sidenav" role="dialog" aria-modal="true" aria-labelledby="sn-t" tabindex="-1">
+  <div class="drawer-head"><span class="drawer-title" id="sn-t">页面</span><button type="button" class="closebtn" aria-label="关闭菜单"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav aria-label="全部页面"><ul>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="how-it-works.html" aria-current="page">工作方式</a></li>
+    <li><a href="faq.html">常见问题</a></li>
+    <li><a href="roadmap.html">路线图</a></li>
+    <li><a href="privacy.html">隐私政策</a></li>
+    <li><a href="disclaimer.html">免责声明</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+  </ul></nav>
+</div>
 <script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
-<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F6E9D8'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F8ECD3'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+<script src="../menu.js"></script>
 </body>
 </html>
