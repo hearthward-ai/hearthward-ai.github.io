@@ -35,7 +35,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar">
 <div class="bar-in">
-  <a class="brand" href="index.html"><img class="logo logo-light" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞, home page" width="144" height="32"><img class="logo logo-dark" src="brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
+  <a class="brand" href="index.html" aria-label="Hearthward 煦坞, home page"><img class="logo logo-light" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="" width="144" height="32"><img class="logo logo-dark" src="brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
   <div class="tools">
   <button type="button" class="themesw" aria-pressed="false" aria-label="Dark mode"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
   <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN<span class="sr"> (current language: English)</span></span><a href="zh/how-it-works.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="中文 (Simplified Chinese)">中文</a></div>
@@ -73,7 +73,7 @@
       <li>It applies rule-based checks for hidden characters, text that looks like instructions to the assistant, and common injection tricks.</li>
       <li>Optionally, a small local model with no tools can take a second look. It can only judge text; it cannot act.</li>
       <li>Text that looks suspicious is held for you (the person running it) instead of being passed on. You answer with a short reply, <code>follow &lt;id&gt;</code> (go ahead) or <code>ignore &lt;id&gt;</code> (drop it).</li>
-      <li>Text that passes is fenced off (clearly marked as &ldquo;material to read&rdquo;), and the model is told to treat it as material to read, not as orders. This part is best effort.</li>
+      <li>Text that passes is fenced off (clearly marked as &ldquo;material to read&rdquo;), and the model is told to treat it as material to read, not as orders. This part is best-effort.</li>
       <li>Pictures can be read with an OCR tool (Tesseract; it reads the words in a picture) and checked for common scam signs, in English and Chinese.</li>
     </ul>
   </div>
@@ -105,7 +105,7 @@
 <div class="wrap">
     <h2>What the guard cannot do</h2>
     <div class="disclaimer">
-    <p>The guard is best effort. Rules and a small local model catch many attacks and some scams, and miss others. Rewordings, new tricks and unusual file types can get past it. It lowers the risk of prompt injection and does not remove it. &ldquo;No clear signs&rdquo; is not a promise that something is safe, so check anything important yourself.</p>
+    <p>The guard is best-effort. Rules and a small local model catch many attacks and some scams, and miss others. Rewordings, new tricks and unusual file types can get past it. It lowers the risk of prompt injection and does not remove it. &ldquo;No clear signs&rdquo; is not a promise that something is safe, so check anything important yourself.</p>
     <p>Asking first only helps if you read what you approve: a tricked assistant can still ask for something harmful, so check each request before you say yes.</p>
     </div>
     <p>Questions? See the <a href="faq.html">FAQ</a>. For what is in progress and what is next, see the <a href="roadmap.html">roadmap</a>.</p>

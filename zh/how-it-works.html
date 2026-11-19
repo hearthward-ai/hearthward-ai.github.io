@@ -35,7 +35,7 @@
 <a class="skip" href="#main">跳到正文</a>
 <div class="topbar">
 <div class="bar-in">
-  <a class="brand" href="index.html"><img class="logo logo-light" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="Hearthward 煦坞，返回首页" width="144" height="32"><img class="logo logo-dark" src="../brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
+  <a class="brand" href="index.html" aria-label="Hearthward 煦坞，返回首页"><img class="logo logo-light" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="" width="144" height="32"><img class="logo logo-dark" src="../brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
   <div class="tools">
   <button type="button" class="themesw" aria-pressed="false" aria-label="深色模式"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
   <div class="langsw on-zh" role="group" aria-label="语言"><a href="../how-it-works.html" hreflang="en" lang="en" aria-label="EN (English)">EN</a><span aria-current="page" lang="zh-Hans">中文<span class="sr">（当前语言：中文）</span></span></div>
@@ -62,7 +62,7 @@
   <section id="overview">
 <div class="wrap">
     <h2>一分钟了解思路</h2>
-    <p>助手读取外部内容（聊天消息、邮件、附件、网页、工具输出）时，可能被藏在其中的指令欺骗，这叫提示注入。Hearthward 并不试图让模型免疫，而是在模型外面加一层防护，做三件事：检查进来的内容，限制助手可以做的事，检查发出去的内容。</p>
+    <p>助手读取外部内容（聊天消息、邮件、附件、网页、工具输出）时，可能被藏在其中的指令欺骗，这叫提示词注入。Hearthward 并不试图让模型免疫，而是在模型外面加一层防护，做三件事：检查进来的内容，限制助手可以做的事，检查发出去的内容。</p>
     <p>示意图在<a href="index.html#how">首页</a>。防护层计划做成 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（Nous Research）的插件（可以添加到它上面的附加程序）。以下内容是设计和目前的进展，不是成品。</p>
   </div>
 </section>
@@ -106,7 +106,7 @@
 <div class="wrap">
     <h2>防护层做不到的事</h2>
     <div class="disclaimer">
-    <p>防护层是尽力而为。规则和小型本地模型能识别许多攻击和部分诈骗，但也会漏掉一些。换一种说法、新的手法和少见的文件类型都可能绕过它。它能降低提示注入的风险，但不能消除风险。“没有明显迹象”不等于安全，重要的事请自己再确认。</p>
+    <p>防护层是尽力而为。规则和小型本地模型能识别许多攻击和部分诈骗，但也会漏掉一些。换一种说法、新的手法和少见的文件类型都可能绕过它。它能降低提示词注入的风险，但不能消除风险。“没有明显迹象”不等于安全，重要的事请自己再确认。</p>
     <p>先询问只有在你认真看过再批准时才有用：被骗的助手仍可能提出有害的请求，所以批准之前请先看清楚。</p>
     </div>
     <p>还有疑问？请看<a href="faq.html">常见问题</a>。正在进行的部分和下一步，请看<a href="roadmap.html">路线图</a>。</p>
