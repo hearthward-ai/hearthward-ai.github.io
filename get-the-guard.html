@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get the Hearthward guard</title>
+<meta name="description" content="How to install the Hearthward guard: what it is for, what you need first, and links to the install guide, settings reference and security reporting.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Get the Hearthward guard">
+<meta property="og:description" content="How to install the Hearthward guard: what it is for, what you need first, and links to the install guide, settings reference and security reporting.">
+<meta property="og:url" content="https://hearthward.ai/get-the-guard.html">
+<meta property="og:image" content="https://hearthward.ai/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hearthward 煦坞 logo">
+<meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F8ECD3">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#17191C'}}catch(e){}})();</script>
+<link rel="canonical" href="https://hearthward.ai/get-the-guard.html">
+<link rel="alternate" hreflang="en" href="https://hearthward.ai/get-the-guard.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://hearthward.ai/zh/get-the-guard.html">
+<link rel="alternate" hreflang="x-default" href="https://hearthward.ai/get-the-guard.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/bitter-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hw-sans-body-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hw-han-toggle-450.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+<div class="bar-in">
+  <a class="brand" href="index.html" aria-label="Hearthward 煦坞, home page"><img class="logo logo-light" src="brand/hearthward-lockup-bilingual-light-2x.png" alt="" width="144" height="32"><img class="logo logo-dark" src="brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
+  <div class="tools">
+  <button type="button" class="themesw" aria-pressed="false" aria-label="Dark mode"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
+  <div class="langsw" role="group" aria-label="Language"><span aria-current="page" lang="en">EN<span class="sr"> (current language: English)</span></span><a href="zh/get-the-guard.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="中文 (Simplified Chinese)">中文</a></div>
+  <button type="button" class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="sidenav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</div>
+</div>
+<header>
+<div class="wrap">
+  <h1>Get the guard</h1>
+  <p class="tagline">Install the Hearthward guard on your own computer. This is an early release (v0.9.3), tested on Hermes Agent 0.23.1.</p>
+  <nav aria-label="Page sections">
+    <a href="index.html">Home</a>
+    <a href="#for">What it is for</a>
+    <a href="#need">Before you start</a>
+    <a href="#links">Start here</a>
+  </nav>
+</div>
+</header>
+
+<main id="main">
+  <section id="for">
+<div class="wrap">
+    <h2>What it is for</h2>
+    <p>The guard is a plugin (an add-on) for <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>, an AI assistant you run on your own computer. It checks the text the assistant reads, asks you before it acts, and checks the replies it sends. For the three parts, see <a href="how-it-works.html">how it works</a>.</p>
+    <p>This page is only a signpost. The real step-by-step instructions are in the install guide on GitHub.</p>
+  </div>
+</section>
+  <section id="need">
+<div class="wrap">
+    <h2>Before you start</h2>
+    <ul>
+      <li><strong>Hermes Agent 0.23.1.</strong> The install guide was checked against this version only. Other versions may not work.</li>
+      <li><strong>Linux, or Windows with WSL.</strong> WSL (Windows Subsystem for Linux) is a free part of Windows that runs Linux inside Windows. The guide shows how to turn it on. Tested on Ubuntu 24.04. macOS is not tested.</li>
+      <li><strong>An AI model for Hermes.</strong> Hermes asks for one during its own setup: a cloud service, or a model on your computer. The guard also has an optional model check that uses a local model and about 21 GB of disk space.</li>
+      <li><strong>About 4 GB of free disk space</strong> and an internet connection.</li>
+      <li><strong>One to two hours.</strong> Most of it is waiting for downloads. You do not need to know programming.</li>
+    </ul>
+  </div>
+</section>
+  <section id="links">
+<div class="wrap">
+    <h2>Start here</h2>
+    <ul class="getlinks">
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/INSTALL.md"><strong>Install guide</strong><span>Step by step, from an empty computer to a checked guard (English)</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/SETTINGS.md"><strong>Settings reference</strong><span>What each setting does and what to choose</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/releases/tag/v0.9.3"><strong>Release v0.9.3</strong><span>The exact version this page describes</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/SECURITY.md"><strong>Report a security problem</strong><span>How to tell me privately, without posting details</span></a></li>
+    </ul>
+    <div class="disclaimer">
+    <p><strong>Please read first.</strong> This is early software for testers. It was tested on one setup, mostly with a stand-in for the chat app, so expect rough edges. It lowers the risk of prompt injection (hidden instructions in text the assistant reads); it cannot remove it, and some attacks will get past it. Check anything important yourself. See the <a href="disclaimer.html">disclaimer</a> before you use it.</p>
+    </div>
+    <p>Stuck, or something in the guide is wrong? Open an issue on <a href="https://github.com/hearthward-ai/hearthward-guard/issues">the guard&rsquo;s GitHub page</a>, and never post secrets or private messages there.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+  <p><a href="index.html">Home</a> · <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="roadmap.html">Roadmap</a> · <a href="get-the-guard.html">Get the guard</a> · <a href="privacy.html">Privacy policy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">Guard code on GitHub</a> (<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>) · &copy; TonyC115</p>
+</div>
+</footer>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="drawer" id="sidenav" role="dialog" aria-modal="true" aria-labelledby="sn-t" tabindex="-1">
+  <div class="drawer-head"><span class="drawer-title" id="sn-t">Pages</span><button type="button" class="closebtn" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav aria-label="All pages"><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-it-works.html">How it works</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="get-the-guard.html" aria-current="page">Get the guard</a></li>
+    <li><a href="privacy.html">Privacy policy</a></li>
+    <li><a href="disclaimer.html">Disclaimer</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">Guard code</a></li>
+  </ul></nav>
+</div>
+<script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F8ECD3'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+<script src="menu.js"></script>
+</body>
+</html>

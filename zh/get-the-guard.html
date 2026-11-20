@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>获取 Hearthward 防护层</title>
+<meta name="description" content="如何安装 Hearthward 防护层：它的用途、开始前需要准备什么，以及安装指南、设置说明和安全问题报告的链接。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="获取 Hearthward 防护层">
+<meta property="og:description" content="如何安装 Hearthward 防护层：它的用途、开始前需要准备什么，以及安装指南、设置说明和安全问题报告的链接。">
+<meta property="og:url" content="https://hearthward.ai/zh/get-the-guard.html">
+<meta property="og:image" content="https://hearthward.ai/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hearthward 煦坞 标志">
+<meta name="twitter:image" content="https://hearthward.ai/brand/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F8ECD3">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('hw-theme')==='dark'){d.setAttribute('data-theme','dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#17191C'}}catch(e){}})();</script>
+<link rel="canonical" href="https://hearthward.ai/zh/get-the-guard.html">
+<link rel="alternate" hreflang="en" href="https://hearthward.ai/get-the-guard.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://hearthward.ai/zh/get-the-guard.html">
+<link rel="alternate" hreflang="x-default" href="https://hearthward.ai/get-the-guard.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../fonts/hw-sans-body-vf.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/hw-han-body-450.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/hw-han-bold-650.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="topbar">
+<div class="bar-in">
+  <a class="brand" href="index.html" aria-label="Hearthward 煦坞，返回首页"><img class="logo logo-light" src="../brand/hearthward-lockup-bilingual-light-2x.png" alt="" width="144" height="32"><img class="logo logo-dark" src="../brand/hearthward-lockup-bilingual-dark-2x.png" alt="" width="144" height="32"></a>
+  <div class="tools">
+  <button type="button" class="themesw" aria-pressed="false" aria-label="深色模式"><svg class="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button>
+  <div class="langsw on-zh" role="group" aria-label="语言"><a href="../get-the-guard.html" hreflang="en" lang="en" aria-label="EN (English)">EN</a><span aria-current="page" lang="zh-Hans">中文<span class="sr">（当前语言：中文）</span></span></div>
+  <button type="button" class="menubtn" aria-label="菜单" aria-expanded="false" aria-controls="sidenav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</div>
+</div>
+<header>
+<div class="wrap">
+  <h1>获取防护层</h1>
+  <p class="tagline">在你自己的电脑上安装 Hearthward 防护层。这是早期版本（v0.9.3），在 Hermes Agent 0.23.1 上测试过。</p>
+  <p class="tagline note">本页是英文版的中文译文，如有出入，以<a href="../get-the-guard.html">英文版</a>为准。</p>
+  <nav aria-label="页面栏目">
+    <a href="index.html">首页</a>
+    <a href="#for">用途</a>
+    <a href="#need">开始之前</a>
+    <a href="#links">从这里开始</a>
+  </nav>
+</div>
+</header>
+
+<main id="main">
+  <section id="for">
+<div class="wrap">
+    <h2>用途</h2>
+    <p>防护层是 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（你在自己电脑上运行的 AI 助手）的插件（可以添加到它上面的附加程序）。它检查助手读到的文字，在助手行动之前先问你，并检查助手发出的回复。三个部分的说明，请看<a href="how-it-works.html">工作方式</a>。</p>
+    <p>本页只是个路标。真正的分步说明在 GitHub 上的安装指南里。</p>
+  </div>
+</section>
+  <section id="need">
+<div class="wrap">
+    <h2>开始之前</h2>
+    <ul>
+      <li><strong>Hermes Agent 0.23.1。</strong>安装指南只针对这个版本检查过，其他版本可能不能用。</li>
+      <li><strong>Linux，或装有 WSL 的 Windows。</strong>WSL（Windows Subsystem for Linux）是 Windows 自带的免费功能，可以在 Windows 里运行 Linux。指南里有开启方法。已在 Ubuntu 24.04 上测试，macOS 没有测试。</li>
+      <li><strong>给 Hermes 用的 AI 模型。</strong>Hermes 在它自己的设置过程中会让你选一个：云端服务，或你电脑上的模型。防护层还有一项可选的模型检查，要用本地模型，大约需要 21 GB 磁盘空间。</li>
+      <li><strong>约 4 GB 空闲磁盘空间</strong>和网络连接。</li>
+      <li><strong>一到两小时。</strong>大部分时间在等下载。不需要懂编程。</li>
+    </ul>
+  </div>
+</section>
+  <section id="links">
+<div class="wrap">
+    <h2>从这里开始</h2>
+    <ul class="getlinks">
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/INSTALL.zh-CN.md"><strong>安装指南</strong><span>一步一步，从一台空电脑到检查通过的防护层（简体中文）</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/SETTINGS.zh-CN.md"><strong>设置说明</strong><span>每项设置的作用，以及怎么选</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/releases/tag/v0.9.3"><strong>版本 v0.9.3</strong><span>本页所说明的确切版本</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/SECURITY.md"><strong>报告安全问题</strong><span>如何私下告诉我，不要公开发布细节（该页为英文）</span></a></li>
+    </ul>
+    <div class="disclaimer">
+    <p><strong>请先阅读。</strong>这是给测试者用的早期软件。它只在一种环境上测试过，聊天应用大多用的是替身，所以可能有不少毛病。它能降低提示注入（藏在助手所读文字里的指令）的风险，但不能消除风险，有些攻击会漏过去。重要的事请自己再确认。使用前请先看<a href="disclaimer.html">免责声明</a>。</p>
+    </div>
+    <p>遇到问题，或发现指南有错？请到<a href="https://github.com/hearthward-ai/hearthward-guard/issues">防护层的 GitHub 页面</a>提交 issue，不要在那里发布密钥或私人消息。</p>
+  </div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+  <p><a href="index.html">首页</a> · <a href="how-it-works.html">工作方式</a> · <a href="faq.html">常见问题</a> · <a href="roadmap.html">路线图</a> · <a href="get-the-guard.html">获取防护层</a> · <a href="privacy.html">隐私政策</a> · <a href="disclaimer.html">免责声明</a> · <a href="https://github.com/hearthward-ai">GitHub</a> · <a href="https://github.com/hearthward-ai/hearthward-guard">GitHub 上的防护层代码</a>（<a href="https://github.com/hearthward-ai/hearthward-guard/blob/main/LICENSE">Apache-2.0</a>） · &copy; TonyC115</p>
+</div>
+</footer>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="drawer" id="sidenav" role="dialog" aria-modal="true" aria-labelledby="sn-t" tabindex="-1">
+  <div class="drawer-head"><span class="drawer-title" id="sn-t">页面</span><button type="button" class="closebtn" aria-label="关闭菜单"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav aria-label="全部页面"><ul>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="how-it-works.html">工作方式</a></li>
+    <li><a href="faq.html">常见问题</a></li>
+    <li><a href="roadmap.html">路线图</a></li>
+    <li><a href="get-the-guard.html" aria-current="page">获取防护层</a></li>
+    <li><a href="privacy.html">隐私政策</a></li>
+    <li><a href="disclaimer.html">免责声明</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai">GitHub</a></li>
+    <li class="ext"><a href="https://github.com/hearthward-ai/hearthward-guard">防护层代码</a></li>
+  </ul></nav>
+</div>
+<script>(function(){var s=document.querySelector('.langsw');if(!s)return;var a=s.querySelector('a');a.addEventListener('click',function(e){if(e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();s.classList.add('go');var d=matchMedia('(prefers-reduced-motion: reduce)').matches?0:200;setTimeout(function(){location.href=a.href},d)});addEventListener('pageshow',function(){s.classList.remove('go')})})();</script>
+<script>(function(){var b=document.querySelector('.themesw');if(!b)return;var d=document.documentElement,m=document.querySelector('meta[name=theme-color]');function sync(){var k=d.getAttribute('data-theme')==='dark';b.setAttribute('aria-pressed',k?'true':'false');if(m)m.content=k?'#17191C':'#F8ECD3'}sync();b.addEventListener('click',function(){var k=d.getAttribute('data-theme')!=='dark';if(k)d.setAttribute('data-theme','dark');else d.removeAttribute('data-theme');try{localStorage.setItem('hw-theme',k?'dark':'light')}catch(e){}sync()})})();</script>
+<script src="../menu.js"></script>
+</body>
+</html>
