@@ -60,7 +60,8 @@
   <section id="for">
 <div class="wrap">
     <h2>What it is for</h2>
-    <p>The guard is a plugin (an add-on) for <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>, an AI assistant you run on your own computer. It checks the text the assistant reads, asks you before it acts, and checks the replies it sends. For the three parts, see <a href="how-it-works.html">how it works</a>.</p>
+    <p>The guard is a plugin (an add-on) for <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>, an AI assistant you run on your own computer. It checks the text the assistant reads, asks you before it acts, and checks the replies it sends. Its main job is to lower the risk of prompt injection, which means hidden instructions in text the assistant reads, for example in a web page or an email. For the three parts, see <a href="how-it-works.html">how it works</a>.</p>
+    <p><strong>Who it is for:</strong> people who are happy to follow a long guide and want to try a safety add-on for Hermes Agent. You do not need to know programming, and you do not need Hermes installed already: the guide installs it.</p>
     <p>This page is only a signpost. The real step-by-step instructions are in the install guide on GitHub.</p>
   </div>
 </section>
@@ -68,12 +69,17 @@
 <div class="wrap">
     <h2>Before you start</h2>
     <ul>
-      <li><strong>Hermes Agent 0.23.1.</strong> The install guide was checked against this version only. Other versions may not work.</li>
-      <li><strong>Linux, or Windows with WSL.</strong> WSL (Windows Subsystem for Linux) is a free part of Windows that runs Linux inside Windows. The guide shows how to turn it on. Tested on Ubuntu 24.04. macOS is not tested.</li>
-      <li><strong>An AI model for Hermes.</strong> Hermes asks for one during its own setup: a cloud service, or a model on your computer. The guard also has an optional model check that uses a local model and about 21 GB of disk space.</li>
-      <li><strong>About 4 GB of free disk space</strong> and an internet connection.</li>
-      <li><strong>One to two hours.</strong> Most of it is waiting for downloads. You do not need to know programming.</li>
+      <li><strong>Hermes Agent 0.23.1.</strong> The guide was checked against this version only, and newer versions are untested. Do not update Hermes afterwards.</li>
+      <li><strong>Linux, or Windows with WSL.</strong> WSL (Windows Subsystem for Linux) is a free part of Windows that runs Linux inside Windows. It needs Windows 10 version 2004 or newer, or Windows 11, and the guide shows how to turn it on. Tested on Ubuntu 24.04. macOS is not tested.</li>
+      <li><strong>An account in a chat app</strong> for your assistant, for example Discord or Telegram. Hermes connects to it during its own setup.</li>
+      <li><strong>An AI model for Hermes.</strong> Hermes asks for one during its own setup: a cloud service, or a model on your computer.</li>
+      <li><strong>About 4 GB of free disk space</strong> and an internet connection. The optional model check is extra (see below).</li>
+      <li><strong>One to two hours.</strong> Most of it is waiting for downloads. The Hermes install can show no progress for about 30 minutes; wait and do not close the window.</li>
     </ul>
+    <p><strong>The optional model check</strong> is a second look at suspicious text by a small AI model that runs on your computer. You can skip it. If you want it, you need about 21 GB more disk space (about 25 GB in all) and about 24 GB of free memory (graphics card memory and normal memory together).</p>
+    <div class="disclaimer">
+    <p><strong>Please read first.</strong> This is an early release for testers and has not been independently audited. It was tested on one setup, and only with a stand-in for Discord (a fake chat app), never with a real chat account, so expect rough edges. It lowers the risk of prompt injection; it cannot remove it, and some attacks will get past it. Check anything important yourself. See the <a href="disclaimer.html">disclaimer</a> before you use it.</p>
+    </div>
   </div>
 </section>
   <section id="links">
@@ -82,13 +88,10 @@
     <ul class="getlinks">
       <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/INSTALL.md"><strong>Install guide</strong><span>Step by step, from an empty computer to a checked guard (English)</span></a></li>
       <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/SETTINGS.md"><strong>Settings reference</strong><span>What each setting does and what to choose</span></a></li>
-      <li><a href="https://github.com/hearthward-ai/hearthward-guard/releases/tag/v0.9.3"><strong>Release v0.9.3</strong><span>The exact version this page describes</span></a></li>
-      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/SECURITY.md"><strong>Report a security problem</strong><span>How to tell me privately, without posting details</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/releases/tag/v0.9.3"><strong>Source code at v0.9.3</strong><span>The exact tagged version this page describes. There is no separate download or release notes yet.</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/SECURITY.md"><strong>Report a security problem</strong><span>How to tell the maintainer privately, without posting details (needs a free GitHub account)</span></a></li>
     </ul>
-    <div class="disclaimer">
-    <p><strong>Please read first.</strong> This is early software for testers. It was tested on one setup, mostly with a stand-in for the chat app, so expect rough edges. It lowers the risk of prompt injection (hidden instructions in text the assistant reads); it cannot remove it, and some attacks will get past it. Check anything important yourself. See the <a href="disclaimer.html">disclaimer</a> before you use it.</p>
-    </div>
-    <p>Stuck, or something in the guide is wrong? Open an issue on <a href="https://github.com/hearthward-ai/hearthward-guard/issues">the guard&rsquo;s GitHub page</a>, and never post secrets or private messages there.</p>
+    <p>Stuck, or something in the guide is wrong? <a href="https://github.com/hearthward-ai/hearthward-guard/issues">Open an issue on GitHub</a>, and never post secrets or private messages there.</p>
   </div>
 </section>
 </main>

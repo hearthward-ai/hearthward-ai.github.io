@@ -61,7 +61,8 @@
   <section id="for">
 <div class="wrap">
     <h2>用途</h2>
-    <p>防护层是 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（你在自己电脑上运行的 AI 助手）的插件（可以添加到它上面的附加程序）。它检查助手读到的文字，在助手行动之前先问你，并检查助手发出的回复。三个部分的说明，请看<a href="how-it-works.html">工作方式</a>。</p>
+    <p>防护层是 <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>（你在自己电脑上运行的 AI 助手）的插件（给它增加功能的小程序）。它检查助手读到的文字，在助手行动之前先问你，并检查助手发出的回复。它的主要作用是降低提示注入的风险，也就是藏在助手所读文字（例如网页或邮件）里的指令。三个部分的说明，请看<a href="how-it-works.html">工作方式</a>。</p>
+    <p><strong>适合谁：</strong>愿意照着一份长指南一步步做、想给 Hermes Agent 试用安全插件的人。不需要懂编程，也不需要事先装好 Hermes：指南会带你安装。</p>
     <p>本页只是个路标。真正的分步说明在 GitHub 上的安装指南里。</p>
   </div>
 </section>
@@ -69,27 +70,29 @@
 <div class="wrap">
     <h2>开始之前</h2>
     <ul>
-      <li><strong>Hermes Agent 0.23.1。</strong>安装指南只针对这个版本检查过，其他版本可能不能用。</li>
-      <li><strong>Linux，或装有 WSL 的 Windows。</strong>WSL（Windows Subsystem for Linux）是 Windows 自带的免费功能，可以在 Windows 里运行 Linux。指南里有开启方法。已在 Ubuntu 24.04 上测试，macOS 没有测试。</li>
-      <li><strong>给 Hermes 用的 AI 模型。</strong>Hermes 在它自己的设置过程中会让你选一个：云端服务，或你电脑上的模型。防护层还有一项可选的模型检查，要用本地模型，大约需要 21 GB 磁盘空间。</li>
-      <li><strong>约 4 GB 空闲磁盘空间</strong>和网络连接。</li>
-      <li><strong>一到两小时。</strong>大部分时间在等下载。不需要懂编程。</li>
+      <li><strong>Hermes Agent 0.23.1。</strong>指南只针对这个版本检查过，更新的版本没有测试过。装好之后不要更新 Hermes。</li>
+      <li><strong>Linux，或装有 WSL 的 Windows。</strong>WSL（Windows Subsystem for Linux）是 Windows 自带的免费功能，可以在 Windows 里运行 Linux。需要 Windows 10 2004 版或更新，或 Windows 11，指南里有开启方法。已在 Ubuntu 24.04 上测试，macOS 没有测试。</li>
+      <li><strong>一个聊天软件账号</strong>，给你的助手用，比如 Discord 或 Telegram。Hermes 会在它自己的设置过程中连上它。</li>
+      <li><strong>给 Hermes 用的 AI 模型。</strong>Hermes 在它自己的设置过程中会让你选一个：云端服务，或你电脑上的模型。</li>
+      <li><strong>约 4 GB 空闲磁盘空间</strong>和网络连接。可选的模型检查另需空间（见下）。</li>
+      <li><strong>一到两小时。</strong>大部分时间在等下载。安装 Hermes 时，大约 30 分钟里可能看不到任何进度；请耐心等，不要关掉窗口。</li>
     </ul>
+    <p><strong>可选的模型检查</strong>，是让一个在你电脑上运行的小型 AI 模型，对可疑文字再看一遍。可以跳过。如果要用，需要再多约 21 GB 磁盘空间（一共约 25 GB），以及约 24 GB 空闲内存（显卡显存和普通内存加起来）。</p>
+    <div class="disclaimer">
+    <p><strong>请先阅读。</strong>这是给测试者用的早期版本，没有经过独立审计。它只在一种环境上测试过，而且聊天软件只用过模拟的 Discord 程序，没有接过真实账号，所以难免有粗糙之处。它能降低提示注入的风险，但不能消除风险，有些攻击会漏过去。重要的事请自己再确认。使用前请先看<a href="disclaimer.html">免责声明</a>。</p>
+    </div>
   </div>
 </section>
   <section id="links">
 <div class="wrap">
     <h2>从这里开始</h2>
     <ul class="getlinks">
-      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/INSTALL.zh-CN.md"><strong>安装指南</strong><span>一步一步，从一台空电脑到检查通过的防护层（简体中文）</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/INSTALL.zh-CN.md"><strong>安装指南</strong><span>一步一步，从一台空电脑到能通过自检的防护层（简体中文）</span></a></li>
       <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/guard/SETTINGS.zh-CN.md"><strong>设置说明</strong><span>每项设置的作用，以及怎么选</span></a></li>
-      <li><a href="https://github.com/hearthward-ai/hearthward-guard/releases/tag/v0.9.3"><strong>版本 v0.9.3</strong><span>本页所说明的确切版本</span></a></li>
-      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/SECURITY.md"><strong>报告安全问题</strong><span>如何私下告诉我，不要公开发布细节（该页为英文）</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/releases/tag/v0.9.3"><strong>源码 v0.9.3</strong><span>本页所说明的确切标记版本。目前没有单独的下载包或发布说明。</span></a></li>
+      <li><a href="https://github.com/hearthward-ai/hearthward-guard/blob/v0.9.3/SECURITY.md"><strong>报告安全问题</strong><span>如何私下告诉维护者，不要公开发布细节（需要免费的 GitHub 账号；该页为英文）</span></a></li>
     </ul>
-    <div class="disclaimer">
-    <p><strong>请先阅读。</strong>这是给测试者用的早期软件。它只在一种环境上测试过，聊天应用大多用的是替身，所以可能有不少毛病。它能降低提示注入（藏在助手所读文字里的指令）的风险，但不能消除风险，有些攻击会漏过去。重要的事请自己再确认。使用前请先看<a href="disclaimer.html">免责声明</a>。</p>
-    </div>
-    <p>遇到问题，或发现指南有错？请到<a href="https://github.com/hearthward-ai/hearthward-guard/issues">防护层的 GitHub 页面</a>提交 issue，不要在那里发布密钥或私人消息。</p>
+    <p>遇到问题，或发现指南有错？请<a href="https://github.com/hearthward-ai/hearthward-guard/issues">在 GitHub 上提交 issue（问题反馈）</a>，不要在那里发布密钥或私人消息。</p>
   </div>
 </section>
 </main>
